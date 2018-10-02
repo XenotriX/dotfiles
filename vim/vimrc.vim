@@ -4,6 +4,7 @@ set ai
 set si
 set number
 set relativenumber
+let NERDTreeShowHidden=1
 
 imap jj <esc> 
 nnoremap <C-H> <C-W><C-H>
