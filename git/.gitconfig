@@ -1,0 +1,5 @@
+[alias]
+    s = status
+    c = commit
+    co = checkout
+    l = log --graph --online
