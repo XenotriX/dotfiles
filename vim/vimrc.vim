@@ -1,7 +1,8 @@
+filetype plugin indent on
 set shiftwidth=4
 set tabstop=4
-set ai
-set si
+set expandtab
+set autoindent
 set number
 set relativenumber
 let NERDTreeShowHidden=1
