@@ -3,3 +3,4 @@
     c = commit
     co = checkout
     l = log --graph --oneline
+    lf = log --graph --oneline --first-parent
