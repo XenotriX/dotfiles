@@ -12,6 +12,8 @@ Plugin 'HerringtonDarkholme/yats.vim'
 
 Plugin 'posva/vim-vue'
 
+Plugin 'mattn/emmet-vim'
+
 call vundle#end()
 filetype plugin indent on
 
