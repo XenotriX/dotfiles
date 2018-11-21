@@ -8,6 +8,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'HerringtonDarkholme/yats.vim'
+
 call vundle#end()
 filetype plugin indent on
 
