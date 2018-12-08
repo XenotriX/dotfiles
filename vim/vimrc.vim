@@ -12,7 +12,7 @@ let NERDTreeShowHidden=1
 "
 " Key bindings
 "
-imap jj <esc> 
+imap jj <esc>
 " Move around splits
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
