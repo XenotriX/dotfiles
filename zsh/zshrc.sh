@@ -6,7 +6,7 @@ plugins=()
 
 # automaticaly ls after cd
 chpwd() {
-	ls
+	ls --color=always
 }
 
 # Default Editor
