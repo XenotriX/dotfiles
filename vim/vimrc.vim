@@ -9,6 +9,9 @@ set number
 set relativenumber
 " NERDTree
 let NERDTreeShowHidden=1
+" MISC
+set hlsearch
+syntax on
 "
 " Key bindings
 "
