@@ -2,9 +2,7 @@
 export ZSH_THEME="robbyrussell"
 
 # Plugin
-plugins=(
-  zsh-autosuggestions
-)
+plugins=()
 
 # automaticaly ls after cd
 chpwd() {
