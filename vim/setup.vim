@@ -1,20 +1,26 @@
 set nocompatible
 filetype off
 
-set rtp+=~/dotfiles/vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 
-Plugin 'posva/vim-vue'
+Plug 'posva/vim-vue'
 
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
-call vundle#end()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
 filetype plugin indent on
 
 so ~/dotfiles/vim/vimrc.vim
