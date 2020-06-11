@@ -23,6 +23,9 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'christianchiarulli/onedark.vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 filetype plugin indent on
