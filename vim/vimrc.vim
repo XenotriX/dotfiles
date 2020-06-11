@@ -12,6 +12,7 @@ let NERDTreeShowHidden=1
 " MISC
 set hlsearch
 syntax on
+colorscheme onedark
 "
 " Key bindings
 "
