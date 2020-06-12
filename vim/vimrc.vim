@@ -44,3 +44,8 @@ nnoremap <C-K> <C-W><C-K>
 
 " Toggle NERDTree
 map <C-M> :NERDTreeToggle<cr>
+
+" Use esc to go back to normal mode from the terminal
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
