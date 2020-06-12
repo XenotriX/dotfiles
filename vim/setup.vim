@@ -28,6 +28,10 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-rooter'
 
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 filetype plugin indent on
