@@ -53,3 +53,4 @@ if (empty($TMUX))
 endif
 
 so ~/dotfiles/vim/vimrc.vim
+so ~/dotfiles/vim/coc.vim
