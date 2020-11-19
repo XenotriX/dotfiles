@@ -26,11 +26,22 @@ Plug 'christianchiarulli/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'airblade/vim-rooter'
 
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+Plug 'unblevable/quick-scope'
+
+Plug 'OmniSharp/omnisharp-vim'
+
+Plug 'preservim/nerdcommenter'
+
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+
+Plug 'godlygeek/tabular'
+
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 

@@ -2,7 +2,7 @@
 export ZSH_THEME="robbyrussell"
 
 # Plugin
-plugins=()
+plugins=(taskwarrior)
 
 # automaticaly ls after cd
 chpwd() {

@@ -16,10 +16,23 @@ set relativenumber
 let NERDTreeShowHidden=1
 
 " MISC
+set cursorline
 set hlsearch
 syntax on
 colorscheme onedark
 let mapleader = " "
+set nowrap
+let g:OmniSharp_server_use_mono = 1
+let g:vim_markdown_folding_disabled = 1
+set ignorecase
+set smartcase
+
+" Useful for plugin development
+set rtp+=.
+
+" QuickScope colors
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 """"""""""""""""""""""
 "    Key bindings    "
