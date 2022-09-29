@@ -33,7 +33,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'unblevable/quick-scope'
 
-Plug 'OmniSharp/omnisharp-vim'
+"Plug 'OmniSharp/omnisharp-vim'
 
 Plug 'preservim/nerdcommenter'
 
@@ -41,7 +41,19 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 Plug 'godlygeek/tabular'
 
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'lervag/vimtex'
+
+Plug 'liuchengxu/vim-which-key'
+
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+"Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
