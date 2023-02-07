@@ -1,0 +1,152 @@
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #e366ff
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+monitor = ${env:MONITOR:}
+
+width = 100%
+height = 20
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = ${colors.background}
+
+border-size = 0
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "Roboto:style=Bold:size=10.5;3"
+font-1 = "Material Design Icons:style=Regular:size=10;3"
+font-2 = "JetBrainsMono Nerd Font:style=Regular:size=10;2"
+
+modules-left = i3 spotify
+modules-center = date
+modules-right = bluetooth xkeyboard battery temp
+
+tray-position = right
+tray-padding = 5
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+layout-icon-0 = us; QWERTY
+layout-icon-1 = real-prog-dvorak; Dvorak
+
+label-layout = %icon%
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-foreground= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+; visible = workspaces on unfocused monitor
+label-visible = %index%
+label-visible-foreground = #fff
+label-visible-background = ${colors.background-alt}
+label-visible-padding = 2
+
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/date]
+type = custom/script
+exec = ~/scripts/calendar.sh
+interval = 5
+
+click-left = ~/scripts/calendar.sh --popup &
+
+[module/battery]
+type = internal/battery
+
+format-discharging = <ramp-capacity><label-discharging>
+
+battery = BAT0
+adapter = ADP1
+
+ramp-capacity-0 = 󰂎
+ramp-capacity-1 = 󰁺
+ramp-capacity-2 = 󰁻
+ramp-capacity-3 = 󰁼
+ramp-capacity-4 = 󰁽
+ramp-capacity-5 = 󰁾
+ramp-capacity-6 = 󰁿
+ramp-capacity-7 = 󰂀
+ramp-capacity-8 = 󰂁
+ramp-capacity-9 = 󰂂
+ramp-capacity-10 = 󰁹
+
+full-at = 98
+
+label-charging = "󰠠%percentage%%"
+
+format-charging-foregrounde = #ffb52a
+format-full-foreground = #4caf50
+format-low-foregrounde = #e60053
+
+[module/temp]
+type = internal/temperature
+
+thermal-zone = 0
+
+format-warn-foreground = #ffb52a
+
+base-temperature = 0
+warn-temperature = 60
+
+[module/bluetooth]
+type = custom/script
+exec = /home/tibo/scripts/bluetooth.sh
+interval = 1
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/spotify]
+type = custom/script
+interval = 0.5
+format = <label>
+exec = python ~/sources/polybar-spotify/spotify_status.py -f '{artist}: {song}' --playpause-font=2
+click-left = playerctl --player=spotify play-pause
+format-foreground = #e366ff 
+

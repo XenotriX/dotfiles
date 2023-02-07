@@ -1,5 +1,4 @@
 echo "Setting up dotfiles"
-echo "source $HOME/dotfiles/zsh/zshinit.sh" > ~/.zshrc
-echo "so $HOME/dotfiles/vim/setup.vim" > ~/.vimrc
-git config --global include.path "$HOME/dotfiles/git/.gitconfig"
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+stow */
 echo "Done"

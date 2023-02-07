@@ -1,0 +1,57 @@
+#compdef pm
+
+_pm() {
+  local cur prev opts
+  cur=${words[CURRENT]}
+  prev=${words[CURRENT-1]}
+  opts="install uninstall list repo show sync update find help"
+
+  case "${prev}" in
+    install)
+      local packages
+      packages=$(pacman -Ssq)
+      _arguments "*:package:(${packages})"
+      return
+      ;;
+    uninstall)
+      local packages
+      packages=$(pacman -Qq)
+      _arguments "*:package:(${packages})"
+      return
+      ;;
+    list)
+      local options
+      options="--explicitely --manually --upgradeable"
+      _arguments "*:option:(${options})"
+      return
+      ;;
+    repo)
+      local subcommands
+      subcommands="add remove"
+      _arguments "*:subcommand:(${subcommands})"
+      return
+      ;;
+    show)
+      local subcommands
+      subcommands="files dependencies dependent info changelog"
+      _arguments "*:subcommand:(${subcommands})"
+      return
+      ;;
+    update)
+      local packages
+      packages=$(pacman -Qq)
+      _arguments "*:package:(${packages})"
+      return
+      ;;
+    find)
+      local options
+      options="owner file --regex"
+      _arguments "*:option:(${options})"
+      return
+      ;;
+    *)
+      _arguments "1:command:(${opts})"
+    esac
+}
+
+compdef _pm pm
