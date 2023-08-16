@@ -18,40 +18,52 @@ require("mason").setup({
 require('mason-lspconfig').setup()
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.offsetEncoding = { 'utf-16' }
 
 -- The following example advertise capabilities to `clangd`.
 require('lspconfig').clangd.setup {
-  capabilities = capabilities,
-  cmd = {
-      'clangd',
-      '--background-index',
-      '--clang-tidy'
-  }
+    capabilities = capabilities,
+    cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy'
+    }
 }
 
 require('lspconfig').tsserver.setup {
     capabilities = capabilities,
 }
 
-require('lspconfig')['sumneko_lua'].setup {
+require('lspconfig')['lua_ls'].setup {
     capabilities = capabilities,
 }
 
-require('lspconfig')['pyright'].setup {
+require('lspconfig')['pylsp'].setup {
     capabilities = capabilities,
 }
 
-require('lspconfig').dartls.setup{
+require('lspconfig').dartls.setup {
+    capabilities = capabilities,
+}
+
+require('lspconfig').dockerls.setup {
+    capabilities = capabilities,
+}
+
+require('lspconfig').gdscript.setup{
+    capabilities = capabilities,
+}
+
+require('lspconfig').html.setup{
     capabilities = capabilities,
 }
 
 local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
 }
 
 for _, sign in ipairs(signs) do

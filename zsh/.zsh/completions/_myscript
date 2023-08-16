@@ -1,0 +1,22 @@
+#compdef _myscript myscript
+
+_myscript() {
+  local cur prev opts
+  cur="${words[CURRENT]}"
+  prev="${words[CURRENT-1]}"
+  opts="arg1 arg2 arg3"
+
+  _arguments \
+    '1: :->args' \
+    '*:: :->args' \
+    && return
+
+  case "${state}" in
+    args)
+      _describe 'arguments' opts
+      ;;
+  esac
+}
+
+compdef _myscript myscript
+

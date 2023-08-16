@@ -7,10 +7,11 @@
     // Choose the order of the modules
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "temperature", "battery", "clock", "tray"],
+    "modules-right": ["custom/strack", "network", "temperature", "battery", "clock", "tray"],
     // Modules configuration
     "wlr/workspaces": {
         "on-click": "activate",
+        "sort-by-number": true,
     },
     "hyprland/window": {
         "separate-outputs": true
@@ -55,5 +56,11 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+    "custom/strack": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/strack.sh",
+        "interval": 5
+    }
 }
 

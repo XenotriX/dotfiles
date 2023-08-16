@@ -23,6 +23,9 @@ wk.register({
         g = "Find in files",
         r = "Resume previous search",
         s = "Symbols in file",
+        S = "Symbols in workspace",
+        f = "Functions in file",
+        F = "Functions in workspace",
     },
     r = {
         name = 'Refactor',
@@ -37,7 +40,8 @@ wk.register({
         f = 'Open floating',
     },
     f = 'Format',
-    e = 'Toggle file tree'
+    e = 'Toggle file tree',
+    m = 'Make'
 }, {prefix = '<leader>'})
 
 wk.register({

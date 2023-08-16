@@ -37,6 +37,18 @@ _pm() {
       _arguments "*:subcommand:(${subcommands})"
       return
       ;;
+    changelog)
+      local subcommands
+      packages=$(pacman -Qq)
+      _arguments "*:package:(${packages})"
+      return
+      ;;
+    info)
+      local subcommands
+      packages=$(pacman -Qq)
+      _arguments "*:package:(${packages})"
+      return
+      ;;
     update)
       local packages
       packages=$(pacman -Qq)

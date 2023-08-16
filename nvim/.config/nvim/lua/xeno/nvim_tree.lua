@@ -1,3 +1,18 @@
+local function on_attach(bufnr)
+    local api = require('nvim-tree.api')
+
+    local function opts(desc)
+        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    api.config.mappings.default_on_attach(bufnr)
+
+    vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
+    vim.keymap.set('n', '<CR', api.node.open.edit, opts('Open'))
+    vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
+    vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
+end
+
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
@@ -8,12 +23,6 @@ require("nvim-tree").setup({
     view = {
         adaptive_size = true,
         side = 'right',
-        mappings = {
-            list = {
-                { key = { 'l', '<CR', 'o' }, action = 'edit'},
-                { key = 'h', action = 'close_node'},
-            }
-        }
     },
     renderer = {
         group_empty = true,
@@ -28,7 +37,9 @@ require("nvim-tree").setup({
         open_file = {
             quit_on_open = true,
         }
-    }
+    },
+    update_cwd = true,
+    on_attach = on_attach,
 })
 
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', {noremap = true, silent = true});
+vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', { noremap = true, silent = true });

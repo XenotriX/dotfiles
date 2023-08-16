@@ -1,8 +1,8 @@
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
         vim.cmd [[packadd packer.nvim]]
         return true
     end
@@ -13,7 +13,7 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
+    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'folke/which-key.nvim'
@@ -33,10 +33,12 @@ return require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-surround'
     use 'preservim/vim-markdown'
-    use 'terrortylor/nvim-comment'
+    use 'numToStr/Comment.nvim'
     use 'unblevable/quick-scope'
     use 'ThePrimeagen/vim-be-good'
-
+    use 'lervag/vimtex'
+    use { 'heavenshell/vim-jsdoc', run = 'make install'}
+    use 'folke/zen-mode.nvim'
 
     -- Completion
     use 'hrsh7th/nvim-cmp'
@@ -47,6 +49,8 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-nvim-lua'
+    use 'zbirenbaum/copilot.lua'
+    use 'zbirenbaum/copilot-cmp'
 
     -- LSP
     use 'neovim/nvim-lspconfig'

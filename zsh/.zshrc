@@ -1,8 +1,11 @@
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
-#source /home/tibo/dotfiles/zsh/zshinit.sh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/z/z.sh
 
 # Plugins
 plug "zsh-users/zsh-completions"
+plug "zsh-users/zsh-history-substring-search"
 plug "Aloxaf/fzf-tab"
 
 # Aliases
@@ -18,6 +21,7 @@ alias goto-save='echo -n "Name: "; read name; echo "$name: $(pwd)" >> /home/tibo
 alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias addr='ip addr show dev wlp82s0 | grep inet | awk "{print \$2}"'
 alias ssh='TERM=xterm-256color ssh'
+alias t='task'
 
 # Environement variables
 export PATH=$PATH:/home/tibo/scripts
@@ -25,7 +29,6 @@ export PATH=$PATH:/home/tibo/.spicetify
 export PATH=$PATH:/home/tibo/.local/bin
 
 # ZSH config
-export FZF_BASE=/home/tibo/source/fzf
 fpath=(~/.zsh/completions $fpath)
 export HISTFILE=~/.zsh_history
 export HISTFILESIZE=1000000000
@@ -39,6 +42,11 @@ export EDITOR="/usr/bin/vi"
 export VISUAL="/usr/bin/vi"
 export LESS="-R"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=white,bold'
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
+export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Git indicator in prompt
 autoload -Uz vcs_info
@@ -47,6 +55,15 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%f'
 zstyle ':vcs_info:*' enable git
+
+# Edit command in editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
+# Delete word stops on /
+autoload -U select-word-style
+select-word-style bash
 
 # Automaticaly ls after cd
 chpwd() {
@@ -90,6 +107,49 @@ n ()
 
 alias n='n -Rd'
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 autoload -Uz compinit && compinit
+
+# Expand ue4cli
+ue() {
+	ue4cli=$HOME/.local/bin/ue4
+	engine_path=$($ue4cli root)
+
+  # cd to ue location
+	if [[ "$1" == "engine" ]]; then
+		cd $engine_path
+  # combine clean and build in one command
+	elif [[ "$1" == "rebuild" ]]; then
+		$ue4cli clean
+		$ue4cli build 
+		if [[ "$2" == "run" ]]; then
+			$ue4cli run
+		fi
+  # build and optionally run while respecting build flags
+	elif [[ "$1" == "build" ]]; then
+		if [[ "${@: -1}" == "run" ]]; then
+			length="$(($# - 2))" # Get length without last param because of 'run'
+			$ue4cli build ${@:2:$length}
+			$ue4cli run
+		else
+			shift 1
+			$ue4cli build "$@"
+		fi
+  # Run project files generation, create a symlink for the compile database and fix-up the compile database
+	elif [[ "$1" == "gen" ]]; then
+		$ue4cli gen
+		project=${PWD##*/}
+		cat ".vscode/compileCommands_${project}.json" | python -c 'import json,sys
+j = json.load(sys.stdin)
+for o in j:
+  file = o["file"]
+  arg = o["arguments"][1]
+  o["arguments"] = ["clang++", "-std=c++20", "-ferror-limit=0", "-Wall", "-Wextra", "-Wpedantic", "-Wshadow-all", "-Wno-unused-parameter", file, arg]
+print(json.dumps(j, indent=2))' > compile_commands.json
+  # Pass through all other commands to ue4
+	else
+		$ue4cli "$@"
+	fi
+}
+
+alias ue4='echo Please use ue instead.'
+alias ue5='echo Please use ue instead.'
