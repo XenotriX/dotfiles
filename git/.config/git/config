@@ -8,3 +8,8 @@
     l = log --graph --oneline
     lf = log --graph --oneline --first-parent
 	change-commits = "{ VAR1=; VAR='$'; OLD=; NEW=; echo \"Are you sure for replace    =>  ?(Y/N)\";read OK;if [ \"\" = 'Y' ] ; then shift 3; git filter-branch  --env-filter \"if [ \\\"\\\" = '' ]; then export ='';echo 'to '; fi\" ; fi;};  f "
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

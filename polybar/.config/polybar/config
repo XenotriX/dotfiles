@@ -32,7 +32,7 @@ font-0 = "Roboto:style=Bold:size=10.5;3"
 font-1 = "Material Design Icons:style=Regular:size=10;3"
 font-2 = "JetBrainsMono Nerd Font:style=Regular:size=10;2"
 
-modules-left = i3 spotify
+modules-left = i3
 modules-center = date
 modules-right = bluetooth xkeyboard battery temp
 

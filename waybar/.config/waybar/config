@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/strack", "network", "temperature", "battery", "clock", "tray"],
+    "modules-right": ["custom/strack", "network", "temperature", "battery", "clock", "tray", "custom/control-panel"],
     // Modules configuration
     "wlr/workspaces": {
         "on-click": "activate",
@@ -61,6 +61,10 @@
         "return-type": "json",
         "exec": "$HOME/.config/waybar/strack.sh",
         "interval": 5
-    }
+    },
+    "custom/control-panel": {
+        "format": "",
+        "on-click": "~/.config/eww/Control-Center/launch.sh",
+    },
 }
 

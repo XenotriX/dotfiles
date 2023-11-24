@@ -898,7 +898,7 @@
 colors:
   # Default colors
   primary:
-    background: '0x1e2127'
+    background: '0x2b303b'
     foreground: '0xabb2bf'
 
   # Normal colors
@@ -922,3 +922,6 @@ colors:
     magenta: '0xc678dd'
     cyan:    '0x56b6c2'
     white:   '0xffffff'
+
+window:
+  opacity: 0.9

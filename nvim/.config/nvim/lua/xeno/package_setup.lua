@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
     use 'lervag/vimtex'
     use { 'heavenshell/vim-jsdoc', run = 'make install'}
     use 'folke/zen-mode.nvim'
+    use 'xiyaowong/transparent.nvim'
 
     -- Completion
     use 'hrsh7th/nvim-cmp'

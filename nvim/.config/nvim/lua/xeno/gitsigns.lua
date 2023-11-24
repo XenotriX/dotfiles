@@ -2,16 +2,25 @@ local gs = require('gitsigns')
 local wk = require('which-key')
 
 -- Setup
-gs.setup()
+gs.setup({
+    signs = {
+        add          = { text = '│' },
+        change       = { text = '│' },
+        delete       = { text = '_' },
+        topdelete    = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked    = { text = '┆' },
+    },
+})
 
 -- Keymaps
-vim.keymap.set({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>')
-vim.keymap.set({'n', 'v'}, '<leader>gr', ':Gitsigns reset_hunk<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<CR>')
 vim.keymap.set('n', '<leader>gS', gs.stage_buffer)
 vim.keymap.set('n', '<leader>gu', gs.undo_stage_hunk)
 vim.keymap.set('n', '<leader>gR', gs.reset_buffer)
 vim.keymap.set('n', '<leader>gp', gs.preview_hunk)
-vim.keymap.set('n', '<leader>gB', function() gs.blame_line{full=true} end)
+vim.keymap.set('n', '<leader>gB', function() gs.blame_line { full = true } end)
 vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame)
 vim.keymap.set('n', '<leader>gd', function() gs.diffthis('HEAD') end)
 vim.keymap.set('n', '<leader>gD', function() gs.diffthis('~') end)
@@ -22,13 +31,13 @@ vim.keymap.set('n', ']h', function()
     if vim.wo.diff then return ']h' end
     vim.schedule(function() gs.next_hunk() end)
     return '<Ignore>'
-end, {expr=true})
+end, { expr = true })
 
 vim.keymap.set('n', '[h', function()
     if vim.wo.diff then return '[h' end
     vim.schedule(function() gs.prev_hunk() end)
     return '<Ignore>'
-end, {expr=true})
+end, { expr = true })
 
 -- Whichkey
 wk.register({
@@ -45,7 +54,7 @@ wk.register({
         d = 'Diff (HEAD)',
         D = 'Diff (~)',
     }
-}, {prefix = '<leader>'})
+}, { prefix = '<leader>' })
 
 wk.register({
     ['[h'] = 'Previous hunk',

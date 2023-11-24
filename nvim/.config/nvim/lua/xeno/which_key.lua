@@ -41,7 +41,8 @@ wk.register({
     },
     f = 'Format',
     e = 'Toggle file tree',
-    m = 'Make'
+    m = 'Make',
+    z = 'Zen Mode'
 }, {prefix = '<leader>'})
 
 wk.register({
