@@ -18,15 +18,17 @@ alias ls='ls --color=tty'
 alias sw='echo $(($(date +%U)-7))'
 alias g='cd $(cat ~/.goto_dirs | fzf | cut -d":" -f2-)'
 alias goto-save='echo -n "Name: "; read name; echo "$name: $(pwd)" >> /home/tibo/.goto_dirs'
-alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias addr='ip addr show dev wlp82s0 | grep inet | awk "{print \$2}"'
 alias ssh='TERM=xterm-256color ssh'
 alias t='task'
+alias wk='nvim +ObsidianQuickSwitch'
 
 # Environement variables
 export PATH=$PATH:/home/tibo/scripts
 export PATH=$PATH:/home/tibo/.spicetify
 export PATH=$PATH:/home/tibo/.local/bin
+export PATH=$PATH:/home/tibo/.cargo/bin
+export STRACK_DATA=/home/tibo/Documents/Share/strack_data.json
 
 # ZSH config
 fpath=(~/.zsh/completions $fpath)
@@ -153,3 +155,27 @@ print(json.dumps(j, indent=2))' > compile_commands.json
 
 alias ue4='echo Please use ue instead.'
 alias ue5='echo Please use ue instead.'
+
+up() {
+  local current_dir dirs full_path
+  current_dir=$(pwd)
+
+  IFS='/' dirs=(${(s:/:)current_dir})
+
+  paths=()
+  full_path=""
+  for i in {1..${#dirs[@]}}; do
+    if [ "$i" -ne 1 ]; then
+      full_path="${full_path}${dirs[$i-1]}/"
+    else
+      full_path="/${dirs[$i-1]}"
+    fi
+    paths+=("$full_path")
+  done
+
+  selected_path=$(printf "%s\n" "${paths[@]}" | sort -rn | fzf)
+
+  if [ -n "$selected_path" ]; then
+    cd "$selected_path"
+  fi
+}
