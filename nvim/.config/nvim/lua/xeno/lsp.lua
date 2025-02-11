@@ -23,12 +23,15 @@ capabilities.offsetEncoding = { 'utf-16' }
 
 -- The following example advertise capabilities to `clangd`.
 require('lspconfig').clangd.setup {
-    capabilities = capabilities,
+    -- capabilities = capabilities,
+    -- root_dir = function() return "/home/tibo/Dev/Work/nussbaum-gateway/sensor/" end,
     cmd = {
         'clangd',
         '--background-index',
-        '--clang-tidy'
-    }
+        '--clang-tidy',
+        '--query-driver=/home/tibo/.espressif/tools/xtensa-esp*-elf/**/xtensa-esp*-elf/bin/xtensa-esp32*-elf-*',
+        '--experimental-modules-support',
+    },
 }
 
 require('lspconfig').tsserver.setup {
@@ -58,6 +61,19 @@ require('lspconfig').gdscript.setup{
 require('lspconfig').html.setup{
     capabilities = capabilities,
 }
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').jsonls.setup {
+  capabilities = capabilities,
+}
+
+require('lspconfig').cssls.setup {
+  capabilities = capabilities,
+}
+
+require('lspconfig').rust_analyzer.setup{}
+
+require('lspconfig').slint_lsp.setup{}
 
 local signs = {
     { name = "DiagnosticSignError", text = "" },

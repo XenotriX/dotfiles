@@ -23,6 +23,10 @@ map('n', '<C-u>', '<C-u>zz', {noremap=true})
 -- Zen mode
 map('n', '<leader>z', ':ZenMode<CR>', {noremap=true})
 
+-- Toggle outline
+map('n', '<leader>o', ':Outline<CR>', {noremap=true})
+
 require('xeno.maps.telescope')
 require('xeno.maps.lsp')
 require('xeno.maps.refactoring')
+require('xeno.maps.quickfix')

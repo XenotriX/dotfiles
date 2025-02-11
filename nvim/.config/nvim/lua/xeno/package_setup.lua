@@ -20,10 +20,14 @@ return require('packer').startup(function(use)
     use 'ChristianChiarulli/nvcode-color-schemes.vim'
     use "lunarvim/darkplus.nvim"
     use 'nvim-treesitter/nvim-treesitter'
+    use {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    }
     use 'ThePrimeagen/refactoring.nvim'
-    use { 'RRethy/vim-hexokinase', run = 'make hexokinase' }
     use 'windwp/nvim-autopairs'
-    use 'fgheng/winbar.nvim'
+    -- use 'fgheng/winbar.nvim'
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-tree/nvim-tree.lua'
     use 'lukas-reineke/indent-blankline.nvim'
@@ -37,9 +41,18 @@ return require('packer').startup(function(use)
     use 'unblevable/quick-scope'
     use 'ThePrimeagen/vim-be-good'
     use 'lervag/vimtex'
-    use { 'heavenshell/vim-jsdoc', run = 'make install'}
+    use { 'heavenshell/vim-jsdoc', run = 'make install' }
     use 'folke/zen-mode.nvim'
     use 'xiyaowong/transparent.nvim'
+    use 'hedyhli/outline.nvim'
+    use 'SmiteshP/nvim-navic'
+    use({
+        'epwalsh/obsidian.nvim',
+        tag = '*', -- Use the latest release
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+    })
 
     -- Completion
     use 'hrsh7th/nvim-cmp'

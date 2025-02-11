@@ -32,6 +32,8 @@ wk.register({
         n = 'Rename',
         i = 'Inline variable',
         b = 'Extract block',
+        a = 'Swap args (right)',
+        A = 'Swap args (left)',
     },
     d = {
         name = 'Diagnostics',
@@ -39,10 +41,37 @@ wk.register({
         q = 'Send to quickfix',
         f = 'Open floating',
     },
+    p = {
+        name = 'Peek',
+        f = 'Function',
+        c = 'Class',
+    },
     f = 'Format',
     e = 'Toggle file tree',
     m = 'Make',
-    z = 'Zen Mode'
+    z = 'Zen Mode',
+    w = {
+        name = 'Wiki (Obsidian)',
+        n = 'New note',
+        o = 'Open note',
+        f = 'Search notes',
+        v = {
+            name = 'View',
+            b = 'View backlinks',
+            l = 'View links',
+            x = 'View in Obsidian',
+            t = 'View tags',
+            d = 'View daily notes',
+        },
+        e = {
+            name = 'Edit',
+            i = 'Insert image',
+            l = 'Insert link',
+            x = 'Extract note',
+            r = 'Rename note',
+            n = 'Insert link (Create)'
+        }
+    },
 }, {prefix = '<leader>'})
 
 wk.register({

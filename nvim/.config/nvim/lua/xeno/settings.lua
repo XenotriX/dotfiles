@@ -34,3 +34,6 @@ vim.g['Hexokinase_highlighters'] = {'foregroundfull'}
 vim.g['vim_markdown_new_list_item_indent'] = 2
 vim.g['vim_markdown_math'] = 1
 vim.g['vim_markdown_folding_level'] = 1
+vim.g['surround_98'] = '**\r**'
+
+vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
