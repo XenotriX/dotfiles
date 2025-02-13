@@ -1,0 +1,53 @@
+[gd_resource type="EditorSettings" load_steps=2 format=3]
+
+[sub_resource type="InputEventKey" id="InputEventKey_u828r"]
+keycode = 4194326
+
+[resource]
+interface/editor/single_window_mode = true
+interface/editor/show_update_spinner = false
+interface/theme/base_color = Color(0.21, 0.24, 0.29, 1)
+interface/theme/accent_color = Color(0.44, 0.73, 0.98, 1)
+interface/theme/contrast = 0.3
+filesystem/import/blender/blender_path = "/usr/bin/blender"
+filesystem/import/blender/rpc_port = 0
+text_editor/behavior/indent/type = 1
+text_editor/behavior/files/trim_final_newlines_on_save = false
+text_editor/behavior/files/restore_scripts_on_load = false
+text_editor/behavior/files/convert_indent_on_save = false
+text_editor/behavior/files/auto_reload_and_parse_scripts_on_save = false
+text_editor/external/exec_path = "/usr/bin/nvim"
+text_editor/external/exec_flags = "--server /tmp/godot.pipe --remote-send \"<C-\\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>\""
+text_editor/external/use_external_editor = true
+editors/3d_gizmos/gizmo_settings/bone_axis_length = 0.1
+export/android/java_sdk_path = ""
+export/android/android_sdk_path = ""
+export/android/debug_keystore = ""
+export/android/debug_keystore_pass = "android"
+export/macos/rcodesign = ""
+export/web/http_port = 8060
+export/web/tls_key = ""
+export/web/tls_certificate = ""
+export/windows/rcedit = ""
+export/windows/osslsigncode = ""
+export/windows/wine = ""
+_default_feature_profile = ""
+_use_favorites_root_selection = false
+network/debug_adapter/request_timeout = 1000
+editors/3d_gizmos/gizmo_colors/path = Color(0.5, 0.5, 1, 0.9)
+_editor_settings_advanced_mode = true
+_project_settings_advanced_mode = true
+_export_template_download_directory = ""
+_script_setup_templates_dictionary = {}
+_script_setup_use_script_templates = false
+shortcuts = [{
+"name": "spatial_editor/viewport_zoom_modifier_1",
+"shortcuts": [SubResource("InputEventKey_u828r")]
+}, {
+"name": "spatial_editor/viewport_zoom_modifier_2",
+"shortcuts": []
+}]
+metadata/script_setup_templates_dictionary = {
+"CharacterBody3D": "0CharacterBody3DBasic Movement",
+"Node": "0NodeDefault"
+}
