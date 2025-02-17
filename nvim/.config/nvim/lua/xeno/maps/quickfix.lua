@@ -10,5 +10,5 @@ local function toggle_quickfix()
 end
 
 vim.keymap.set('n', '<leader>qq', toggle_quickfix, { desc = "Toggle Quickfix Window" })
-vim.keymap.set('n', '<leader>qn', ':cnext<CR>')
-vim.keymap.set('n', '<leader>qp', ':cprev<CR>')
+vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { desc = "Next quickfix location"})
+vim.keymap.set('n', '<leader>qp', ':cprev<CR>', { desc = "Previous quickfix location"})

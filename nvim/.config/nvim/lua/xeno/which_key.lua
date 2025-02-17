@@ -1,6 +1,7 @@
 local wk = require("which-key")
 
 require('which-key').setup {
+    preset = 'helix',
     plugins = {
         spelling = {
             enabled = true,
@@ -13,84 +14,23 @@ require('which-key').setup {
             g = false,
         },
     },
-    ignore_missing = true,
 }
 
--- Normal mode
-wk.register({
-    s = {
-        name = "Search",
-        g = "Find in files",
-        r = "Resume previous search",
-        s = "Symbols in file",
-        S = "Symbols in workspace",
-        f = "Functions in file",
-        F = "Functions in workspace",
-    },
-    r = {
-        name = 'Refactor',
-        n = 'Rename',
-        i = 'Inline variable',
-        b = 'Extract block',
-        a = 'Swap args (right)',
-        A = 'Swap args (left)',
-    },
-    d = {
-        name = 'Diagnostics',
-        a = 'Code action',
-        q = 'Send to quickfix',
-        f = 'Open floating',
-    },
-    p = {
-        name = 'Peek',
-        f = 'Function',
-        c = 'Class',
-    },
-    f = 'Format',
-    e = 'Toggle file tree',
-    m = 'Make',
-    z = 'Zen Mode',
-    w = {
-        name = 'Wiki (Obsidian)',
-        n = 'New note',
-        o = 'Open note',
-        f = 'Search notes',
-        v = {
-            name = 'View',
-            b = 'View backlinks',
-            l = 'View links',
-            x = 'View in Obsidian',
-            t = 'View tags',
-            d = 'View daily notes',
-        },
-        e = {
-            name = 'Edit',
-            i = 'Insert image',
-            l = 'Insert link',
-            x = 'Extract note',
-            r = 'Rename note',
-            n = 'Insert link (Create)'
-        }
-    },
-}, {prefix = '<leader>'})
-
-wk.register({
-    g = {
-        name = 'Goto',
-        h = 'Switch between header/file',
-        d = 'Definition',
-        D = 'Declaration',
-        i = 'Implementation',
-        r = 'References',
-        t = 'Type Definition',
-    }
+wk.add({
+    { "<leader>g", group = "Git" },
+    { "<leader>d",   group = "Diagnostics" },
+    { "<leader>m",   desc = "Make" },
+    { "<leader>p",   group = "Peek" },
+    { "<leader>pc",  desc = "Class" },
+    { "<leader>pf",  desc = "Function" },
+    { "<leader>r",   group = "Refactor" },
+    { "<leader>rA",  desc = "Swap args (left)" },
+    { "<leader>ra",  desc = "Swap args (right)" },
+    { "<leader>s",   group = "Search" },
+    { "<leader>w",   group = "Wiki (Obsidian)" },
+    { "<leader>we",  group = "Edit" },
+    { "<leader>wv",  group = "View" },
+    { "<leader>z",   desc = "Zen Mode" },
+    { "<leader>q", group = "Quickfix"},
+    { "g",  group = "Goto" },
 })
-
--- Visual mode
-wk.register({
-    r = {
-        f = 'Extract function',
-        v = 'Extract variable',
-        i = 'Inline variable',
-    }
-}, {prefix = '<leader>', mode = 'v'})

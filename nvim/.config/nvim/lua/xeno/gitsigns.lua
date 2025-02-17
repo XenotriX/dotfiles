@@ -1,5 +1,4 @@
 local gs = require('gitsigns')
-local wk = require('which-key')
 
 -- Setup
 gs.setup({
@@ -14,49 +13,27 @@ gs.setup({
 })
 
 -- Keymaps
-vim.keymap.set({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<CR>')
-vim.keymap.set('n', '<leader>gS', gs.stage_buffer)
-vim.keymap.set('n', '<leader>gu', gs.undo_stage_hunk)
-vim.keymap.set('n', '<leader>gR', gs.reset_buffer)
-vim.keymap.set('n', '<leader>gp', gs.preview_hunk)
-vim.keymap.set('n', '<leader>gB', function() gs.blame_line { full = true } end)
-vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame)
-vim.keymap.set('n', '<leader>gd', function() gs.diffthis('HEAD') end)
-vim.keymap.set('n', '<leader>gD', function() gs.diffthis('~') end)
-vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
+vim.keymap.set({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = 'Stage hunk' })
+vim.keymap.set({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset hunk' })
+vim.keymap.set('n', '<leader>gS', gs.stage_buffer, { desc = 'Stage buffer' })
+vim.keymap.set('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+vim.keymap.set('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
+vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview hunk' })
+vim.keymap.set('n', '<leader>gB', function() gs.blame_line { full = true } end, { desc = 'Show full blame' })
+vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle line blame' })
+vim.keymap.set('n', '<leader>gd', function() gs.diffthis('HEAD') end, { desc = 'Diff (HEAD)' })
+vim.keymap.set('n', '<leader>gD', function() gs.diffthis('~') end, { desc = 'Diff (~)' })
+vim.keymap.set('n', '<leader>gtd', gs.toggle_deleted, { desc = 'Toggle deleted' })
 
 -- Navigation
 vim.keymap.set('n', ']h', function()
     if vim.wo.diff then return ']h' end
     vim.schedule(function() gs.next_hunk() end)
     return '<Ignore>'
-end, { expr = true })
+end, { expr = true, desc = 'Next hunk' })
 
 vim.keymap.set('n', '[h', function()
     if vim.wo.diff then return '[h' end
     vim.schedule(function() gs.prev_hunk() end)
     return '<Ignore>'
-end, { expr = true })
-
--- Whichkey
-wk.register({
-    g = {
-        name = 'Git',
-        s = 'Stage hunk',
-        r = 'Reset hunk',
-        S = 'Stage buffer',
-        u = 'Undo stage hunk',
-        R = 'Reset buffer',
-        p = 'Preview hunk',
-        b = 'Toggle line blame',
-        B = 'Show full blame',
-        d = 'Diff (HEAD)',
-        D = 'Diff (~)',
-    }
-}, { prefix = '<leader>' })
-
-wk.register({
-    ['[h'] = 'Previous hunk',
-    [']h'] = 'Next hunk',
-})
+end, { expr = true, desc = 'Previous hunk' })

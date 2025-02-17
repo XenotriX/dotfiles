@@ -72,45 +72,20 @@ require('obsidian').setup({
 -- Keybindings
 
 -- -- New note
-vim.api.nvim_set_keymap('n', '<leader>wn', ':ObsidianNew<CR>', { noremap = true, silent = true })
-
--- -- Open note
-vim.api.nvim_set_keymap('n', '<leader>wo', ':ObsidianQuickSwitch<CR>', { noremap = true, silent = true })
-
--- -- Search notes
-vim.api.nvim_set_keymap('n', '<leader>wf', ':ObsidianSearch<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>wn', ':ObsidianNew<CR>', { desc = "New Note"})
+vim.keymap.set('n', '<leader>wo', ':ObsidianQuickSwitch<CR>', { desc = "Open Note"})
+vim.keymap.set('n', '<leader>wf', ':ObsidianSearch<CR>', { desc = "Search Notes"})
 
 -- -- View
-
--- -- -- View in Obsidian
-vim.api.nvim_set_keymap('n', '<leader>wvx', ':ObsidianOpen<CR>', { noremap = true, silent = true })
-
--- -- -- View backlinks
-vim.api.nvim_set_keymap('n', '<leader>wvb', ':ObsidianBacklinks<CR>', { noremap = true, silent = true })
-
--- -- -- View links
-vim.api.nvim_set_keymap('n', '<leader>wvl', ':ObsidianLinks<CR>', { noremap = true, silent = true })
-
--- -- -- View tags
-vim.api.nvim_set_keymap('n', '<leader>wvt', ':ObsidianTags<CR>', { noremap = true, silent = true })
-
--- -- -- View daily notes
-vim.api.nvim_set_keymap('n', '<leader>wvd', ':ObsidianDailies -30 1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>wvx', ':ObsidianOpen<CR>', { desc = "View in Obsidian" })
+vim.keymap.set('n', '<leader>wvb', ':ObsidianBacklinks<CR>', { desc = "Backlinks" })
+vim.keymap.set('n', '<leader>wvl', ':ObsidianLinks<CR>', { desc = "Links" })
+vim.keymap.set('n', '<leader>wvt', ':ObsidianTags<CR>', { desc = "Tags" })
+vim.keymap.set('n', '<leader>wvd', ':ObsidianDailies -30 1<CR>', { desc = "Daily notes" })
 
 -- -- Edit
-
--- -- -- Insert image
-vim.api.nvim_set_keymap('n', '<leader>wei', ':ObsidianInsertImage<CR>', { noremap = true, silent = true })
-
--- -- -- Insert link
-vim.api.nvim_set_keymap('n', '<leader>wel', ':ObsidianLink<CR>', { noremap = true, silent = true })
-
--- -- -- Extract note
-vim.api.nvim_set_keymap('n', '<leader>wex', ':ObsidianExtract<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>wex', ':ObsidianExtract<CR>', { noremap = true, silent = true })
-
--- -- -- Rename note
-vim.api.nvim_set_keymap('n', '<leader>wer', ':ObsidianRename<CR>', { noremap = true, silent = true })
-
--- -- -- Insert link (Create)
-vim.api.nvim_set_keymap('n', '<leader>wen', ':ObsidianInsertLinkNew<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>wei', ':ObsidianInsertImage<CR>', { desc = "Insert Image" })
+vim.keymap.set('n', '<leader>wel', ':ObsidianLink<CR>', { desc = "Insert Link" })
+vim.keymap.set({ 'n', 'v' }, '<leader>wex', ':ObsidianExtract<CR>', { desc = "Extract Note" })
+vim.keymap.set('n', '<leader>wer', ':ObsidianRename<CR>', { desc = "Rename Note" })
+vim.keymap.set('n', '<leader>wen', ':ObsidianInsertLinkNew<CR>', { desc = "Insert Link (New)" })
