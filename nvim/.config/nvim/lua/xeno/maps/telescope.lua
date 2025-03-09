@@ -1,6 +1,16 @@
 local telescope = require('telescope')
+local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
 
 telescope.setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close
+            },
+        },
+        path_display = { "filename_first" }
+    },
     extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_cursor()
@@ -20,5 +30,6 @@ vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>', { desc = "Buffers"})
 
 vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
 
-telescope.load_extension('fzf')
+-- telescope.load_extension('fzf')
+telescope.load_extension('zf-native')
 telescope.load_extension('ui-select')
