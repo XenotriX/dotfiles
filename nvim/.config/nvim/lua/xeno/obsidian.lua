@@ -75,6 +75,7 @@ require('obsidian').setup({
 vim.keymap.set('n', '<leader>wn', ':ObsidianNew<CR>', { desc = "New Note"})
 vim.keymap.set('n', '<leader>wo', ':ObsidianQuickSwitch<CR>', { desc = "Open Note"})
 vim.keymap.set('n', '<leader>wf', ':ObsidianSearch<CR>', { desc = "Search Notes"})
+vim.keymap.set('n', '<leader>wt', ':ObsidianToday<CR>', { desc = "Today's Note"})
 
 -- -- View
 vim.keymap.set('n', '<leader>wvx', ':ObsidianOpen<CR>', { desc = "View in Obsidian" })

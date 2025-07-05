@@ -72,6 +72,11 @@ for newgroup, oldgroup in pairs(links) do
     vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
 end
 
+-- Enable folding based on treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+
 vim.api.nvim_set_hl(0, '@text.title.markdown', {})
 vim.api.nvim_set_hl(0, '@markup.heading.1.markdown', { fg = '#ff757f', bold = true})
 vim.api.nvim_set_hl(0, '@markup.heading.2.markdown', { fg = '#e0af68', bold = true})

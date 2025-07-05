@@ -66,6 +66,7 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lua'
     use 'zbirenbaum/copilot.lua'
     use 'zbirenbaum/copilot-cmp'
+    use 'CopilotC-Nvim/CopilotChat.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'

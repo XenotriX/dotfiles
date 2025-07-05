@@ -42,9 +42,29 @@ require('lspconfig')['lua_ls'].setup {
     capabilities = capabilities,
 }
 
-require('lspconfig')['pylsp'].setup {
-    capabilities = capabilities,
-}
+-- require('lspconfig')['pylsp'].setup {
+--     capabilities = capabilities,
+-- }
+local function extra_args()
+    local virtual = os.getenv("VIRTUAL_ENV") or "/usr"
+    return { "--python-executable", virtual .. "/bin/python3", true }
+end
+
+vim.lsp.config('pylsp', {
+    settings = {
+        pylsp = {
+            plugins = {
+                pylsp_mypy = {
+                    enabled = true,
+                    overrides = extra_args(),
+                    report_progress = true,
+                    live_mode = true,
+                }
+            }
+        }
+    }
+})
+
 
 require('lspconfig').dartls.setup {
     capabilities = capabilities,
@@ -54,37 +74,60 @@ require('lspconfig').dockerls.setup {
     capabilities = capabilities,
 }
 
-require('lspconfig').gdscript.setup{
+require('lspconfig').gdscript.setup {
     capabilities = capabilities,
 }
 
-require('lspconfig').html.setup{
+require('lspconfig').html.setup {
     capabilities = capabilities,
 }
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').jsonls.setup {
-  capabilities = capabilities,
+    capabilities = capabilities,
 }
 
 require('lspconfig').cssls.setup {
-  capabilities = capabilities,
+    capabilities = capabilities,
 }
 
-require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').rust_analyzer.setup {}
 
-require('lspconfig').slint_lsp.setup{}
+require('lspconfig').slint_lsp.setup {}
 
-local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
-}
+-- local signs = {
+--     { name = "DiagnosticSignError", text = "" },
+--     { name = "DiagnosticSignWarn",  text = "" },
+--     { name = "DiagnosticSignHint",  text = "" },
+--     { name = "DiagnosticSignInfo",  text = "" },
+-- }
+--
+-- for _, sign in ipairs(signs) do
+--     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+-- end
 
-for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.HINT] = '',
+            [vim.diagnostic.severity.INFO] = '',
+        },
+        texthl = {
+            [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+            [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+            [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+            [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+        },
+        -- numhl = {
+        --     [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+        --     [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+        --     [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+        --     [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+        -- },
+    },
+})
 
 vim.diagnostic.config({
     float = {

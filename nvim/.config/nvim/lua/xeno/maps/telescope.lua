@@ -28,7 +28,7 @@ vim.keymap.set('n', '<leader>sF', ':Telescope lsp_dynamic_workspace_symbols symb
 vim.keymap.set('n', '<leader>sc', ':Telescope lsp_dynamic_workspace_symbols symbols=class<CR>', { desc = "Classes in workspace"})
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>', { desc = "Buffers"})
 
-vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
+-- vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
 
 -- telescope.load_extension('fzf')
 telescope.load_extension('zf-native')
