@@ -24,6 +24,7 @@ vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle
 vim.keymap.set('n', '<leader>gd', function() gs.diffthis('HEAD') end, { desc = 'Diff (HEAD)' })
 vim.keymap.set('n', '<leader>gD', function() gs.diffthis('~') end, { desc = 'Diff (~)' })
 vim.keymap.set('n', '<leader>gtd', gs.toggle_deleted, { desc = 'Toggle deleted' })
+vim.keymap.set('n', '<leader>gq', function() gs.setqflist('all') end, { desc = 'Add hunks to quickfix' })
 
 -- Navigation
 vim.keymap.set('n', ']h', function()
