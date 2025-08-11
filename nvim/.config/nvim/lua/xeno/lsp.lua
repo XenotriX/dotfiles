@@ -40,6 +40,38 @@ vim.lsp.config('pylsp', {
     }
 })
 
+vim.lsp.config('basedpyright', {
+    -- Use the uv workspace root as the project root
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        -- Find a pyproject.toml file
+        local candidates = vim.fs.find({"pyproject.toml"}, { path = fname, upward = true, limit = math.huge })
+        if #candidates > 0 then
+            -- Return the top-level directory containing the pyproject.toml file
+            on_dir(vim.fs.dirname(candidates[#candidates]))
+            return
+        end
+
+        -- Fallback to .git directory
+        local git_candidates = vim.fs.find({".git"}, { path = fname, upward = true })
+        if #git_candidates > 0 then
+            on_dir(vim.fs.dirname(git_candidates[1]))
+            return
+        end
+
+        -- Use the current directory as a last resort
+        on_dir(vim.fs.dirname(fname))
+    end,
+    settings = {
+        basedpyright = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+            }
+        }
+    }
+})
 
 vim.diagnostic.config({
     signs = {
