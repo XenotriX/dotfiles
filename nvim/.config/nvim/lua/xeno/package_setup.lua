@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
             'nvim-lua/plenary.nvim',
         },
     })
+    use 'stevearc/conform.nvim'
 
     -- Completion
     use 'hrsh7th/nvim-cmp'

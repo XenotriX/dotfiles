@@ -18,7 +18,8 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { silent = true, desc = "
 vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { silent = true, desc = "References" })
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = "Rename" })
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { silent = true, desc = "Format File" })
+-- vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { silent = true, desc = "Format File" })
+vim.keymap.set('n', '<leader>f', require('conform').format, { silent = true, desc = "Format File" })
 vim.keymap.set({ 'v', 'x' }, '<leader>f', vim.lsp.buf.format, { silent = true, desc = "Format" })
 
 vim.keymap.set('n', 'gh', ':ClangdSwitchSourceHeader<CR>', { silent = true, desc = "Switch Header/Source" })
