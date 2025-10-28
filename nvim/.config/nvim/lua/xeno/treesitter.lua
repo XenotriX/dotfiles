@@ -50,6 +50,14 @@ require('nvim-treesitter.configs').setup({
             },
         },
     },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "gnn",
+            node_incremental = "<CR>",
+            node_decremental = "<BS>",
+        },
+    },
 })
 
 -- Map new LSP highlight groups to treesitter highlight groups
