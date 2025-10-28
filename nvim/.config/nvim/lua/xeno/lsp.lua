@@ -85,6 +85,8 @@ vim.lsp.config('basedpyright', {
    }
 })
 
+vim.lsp.enable('dartls')
+
 vim.diagnostic.config({
     signs = {
         text = {
