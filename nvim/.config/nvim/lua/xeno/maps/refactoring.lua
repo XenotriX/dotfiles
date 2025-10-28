@@ -1,5 +1,0 @@
-vim.keymap.set("x", "<leader>rf", ":Refactor extract ", { desc = "Extract Function" })
-vim.keymap.set("x", "<leader>rv", ":Refactor extract_var ", { desc = "Extract Variable" })
-vim.keymap.set({ "n", "x" }, "<leader>ri", ":Refactor inline_var", { desc = "Inline Variable" })
-vim.keymap.set("n", "<leader>rI", ":Refactor inline_func", { desc = "Inline Function" })
-vim.keymap.set("n", "<leader>rb", ":Refactor extract_block", { desc = "Extract Block" })
