@@ -3,9 +3,10 @@ local function quickfix()
 end
 
 vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { silent = true, desc = "Open floating" })
-vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { silent = true, desc = "Sent to quickfix" })
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { silent = true, desc = "Send to quickfix" })
 vim.keymap.set('n', '<leader>da', vim.lsp.buf.code_action, { silent = true, desc = "Code Action" })
 vim.keymap.set('n', '<leader>dd', quickfix, { silent = true, desc = "Quickfix" })
+vim.keymap.set('n', '<leader>dD', vim.diagnostic.setqflist, { silent = true, desc = "Show all in quickfix" })
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true, desc = "Next diagnostic" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { silent = true, desc = "Previous diagnostic" })
