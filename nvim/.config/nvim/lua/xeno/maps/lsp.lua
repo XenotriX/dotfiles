@@ -22,4 +22,4 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = "R
 vim.keymap.set('n', '<leader>f', require('conform').format, { silent = true, desc = "Format File" })
 vim.keymap.set({ 'v', 'x' }, '<leader>f', vim.lsp.buf.format, { silent = true, desc = "Format" })
 
-vim.keymap.set('n', 'gh', ':ClangdSwitchSourceHeader<CR>', { silent = true, desc = "Switch Header/Source" })
+vim.keymap.set('n', 'gh', ':LspClangdSwitchSourceHeader<CR>', { silent = true, desc = "Switch Header/Source" })
