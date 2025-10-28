@@ -73,6 +73,18 @@ vim.lsp.config('basedpyright', {
     }
 })
 
+vim.lsp.config('basedpyright', {
+   settings = {
+       basedpyright = {
+           analysis = {
+               autoSearchPaths = true,
+               diagnosticMode = "workspace",
+               useLibraryCodeForTypes = true
+           }
+       }
+   }
+})
+
 vim.diagnostic.config({
     signs = {
         text = {
