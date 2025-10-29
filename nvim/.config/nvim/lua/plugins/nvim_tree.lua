@@ -3,6 +3,7 @@ return {
     dependencies = {
         'nvim-tree/nvim-web-devicons',
     },
+    enabled = false,
     opts = {
         sort_by = "case_sensitive",
         view = {

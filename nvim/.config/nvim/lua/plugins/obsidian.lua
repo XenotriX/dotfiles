@@ -1,8 +1,5 @@
 return {
-    'epwalsh/obsidian.nvim',
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-    },
+    'obsidian-nvim/obsidian.nvim',
     opts = {
         workspaces = {
             {
@@ -72,6 +69,22 @@ return {
                 ObsidianHighlightText = { bg = "#75662e" },
             },
         }
+    },
+    cmd = {
+        'ObsidianNew',
+        'ObsidianQuickSwitch',
+        'ObsidianSearch',
+        'ObsidianToday',
+        'ObsidianOpen',
+        'ObsidianBacklinks',
+        'ObsidianLinks',
+        'ObsidianTags',
+        'ObsidianDailies',
+        'ObsidianInsertImage',
+        'ObsidianLink',
+        'ObsidianExtract',
+        'ObsidianRename',
+        'ObsidianInsertLinkNew',
     },
     keys = {
         -- -- New note
