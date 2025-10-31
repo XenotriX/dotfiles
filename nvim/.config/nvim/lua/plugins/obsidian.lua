@@ -1,6 +1,9 @@
 return {
     'obsidian-nvim/obsidian.nvim',
     opts = {
+        attachments = {
+            img_folder = "/",
+        },
         workspaces = {
             {
                 name = "wiki",

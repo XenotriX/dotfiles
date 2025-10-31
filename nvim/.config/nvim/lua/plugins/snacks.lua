@@ -7,7 +7,7 @@ return {
         dashboard = { enabled = false },
         explorer = { enabled = true },
         indent = { enabled = false },
-        input = { enabled = false },
+        input = { enabled = true },
         picker = { enabled = true },
         notifier = { enabled = true },
         quickfile = { enabled = true },
@@ -27,6 +27,14 @@ return {
         },
         statuscolumn = { enabled = false },
         words = { enabled = false },
+        image = {
+            enabled = true,
+            resolve = function(path, src)
+               if require("obsidian.api").path_is_note(path) then
+                  return require("obsidian.api").resolve_image_path(src)
+               end
+            end,
+        },
     },
     config = function(_, opts)
         Snacks = require("snacks")
@@ -37,12 +45,13 @@ return {
                 Snacks.explorer({
                     layout = {
                         preset = "default",
+                        preview = true,
                     },
                     auto_close = true,
                     matcher = { sort_empty = false, fuzzy = true, frecency = true },
                 })
             end,
-            { desc = "Toggle Explorer" })
+            { desc = "Explorer" })
 
         vim.keymap.set("n", "<C-p>",
             function()
@@ -61,13 +70,13 @@ return {
                     layout = { preset = "ivy_split" }
                 })
             end,
-            { desc = "Find in files" })
+            { desc = "Grep" })
 
         vim.keymap.set("n", "<leader>sr",
             function()
                 Snacks.picker.resume()
             end,
-            { desc = "Resume previous search" })
+            { desc = "Resume" })
 
         vim.keymap.set("n", "<leader>ss",
             function()
@@ -79,7 +88,7 @@ return {
                     filter = { default = true }
                 })
             end,
-            { desc = "Symbols in file" })
+            { desc = "Symbols (file)" })
 
         vim.keymap.set("n", "<leader>sS",
             function()
@@ -90,7 +99,7 @@ return {
                     }
                 })
             end,
-            { desc = "Symbols in workspace" })
+            { desc = "Symbols (workspace)" })
 
         vim.keymap.set("n", "<leader>sf",
             function()
@@ -98,7 +107,7 @@ return {
                     filter = { default = { "Function", "Method" } }
                 })
             end,
-            { desc = "Functions in file" })
+            { desc = "Functions (file)" })
 
         vim.keymap.set("n", "<leader>sF",
             function()
@@ -106,15 +115,15 @@ return {
                     filter = { default = { "Function", "Method" } }
                 })
             end,
-            { desc = "Functions in workspace" })
+            { desc = "Functions (workspace)" })
 
         vim.keymap.set("n", "<leader>sc",
             function()
                 Snacks.picker.lsp_workspace_symbols({ filter = { default = { "Class" } } })
             end,
-            { desc = "Classes in workspace" })
+            { desc = "Classes (workspace)" })
 
-        vim.keymap.set("n", "<leader>b",
+        vim.keymap.set("n", "<leader>sb",
             function()
                 Snacks.picker.buffers()
             end,
@@ -125,6 +134,34 @@ return {
                 Snacks.picker.lsp_references()
             end,
             { desc = "References" }
+        )
+
+        vim.keymap.set("n", "<leader>su",
+            function()
+                Snacks.picker.undo()
+            end,
+            { desc = "Undo History" }
+        )
+
+        vim.keymap.set("n", "<leader>gl",
+            function()
+                Snacks.lazygit()
+            end,
+            { desc = "Git Commits" }
+        )
+
+        vim.keymap.set("n", "<leader>s'",
+            function()
+                Snacks.picker.marks()
+            end,
+            { desc = "Marks" }
+        )
+        
+        vim.keymap.set("n", "<leader>s\"",
+            function()
+                Snacks.picker.registers()
+            end,
+            { desc = "Registers" }
         )
         -- { '<C-p>', ':lua Snacks.picker.files()<CR>', desc = "Find Files" },
         -- { '<leader>sg', ':Telescope live_grep<CR>',                                                   desc = "Find in files" },
