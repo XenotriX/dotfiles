@@ -35,6 +35,7 @@ return {
             { "<leader>z",  desc = "Zen Mode" },
             { "<leader>q",  group = "Quickfix" },
             { "g",          group = "Goto" },
+            { "gs",         group = "Goto (split)" },
         })
     end,
 }

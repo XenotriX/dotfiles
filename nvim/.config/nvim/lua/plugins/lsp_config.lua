@@ -67,6 +67,13 @@ local function set_keymaps()
         vim.lsp.buf.code_action({ apply = true })
     end
 
+    local function split_then_run(cmd)
+        return function()
+            vim.cmd('vsplit')
+            cmd()
+        end
+    end
+
     vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { silent = true, desc = "Open floating" })
     vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { silent = true, desc = "Send to quickfix" })
     vim.keymap.set('n', '<leader>da', vim.lsp.buf.code_action, { silent = true, desc = "Code Action" })
@@ -81,6 +88,11 @@ local function set_keymaps()
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { silent = true, desc = "Implementation" })
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { silent = true, desc = "Type Definition" })
+
+    vim.keymap.set('n', 'gsD', split_then_run(vim.lsp.buf.declaration), { silent = true, desc = "Declaration" })
+    vim.keymap.set('n', 'gsd', split_then_run(vim.lsp.buf.definition), { silent = true, desc = "Definition" })
+    vim.keymap.set('n', 'gsi', split_then_run(vim.lsp.buf.implementation), { silent = true, desc = "Implementation" })
+    vim.keymap.set('n', 'gst', split_then_run(vim.lsp.buf.type_definition), { silent = true, desc = "Type Definition" })
 
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = "Rename" })
 
