@@ -6,7 +6,20 @@ return {
         bigfile = { enabled = true },
         dashboard = { enabled = false },
         explorer = { enabled = true },
-        indent = { enabled = false },
+        indent = {
+            enabled = true,
+            chunk = {
+                enabled = true,
+                char = {
+                    corner_top = "╭",
+                    corner_bottom = "╰",
+                    horizontal = "─",
+                    vertical = "│",
+                    arrow = "▶",
+                }
+            },
+            animate = { enabled = false },
+        },
         input = { enabled = true },
         picker = { enabled = true },
         notifier = { enabled = true },
