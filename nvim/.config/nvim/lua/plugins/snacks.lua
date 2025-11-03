@@ -176,5 +176,19 @@ return {
             end,
             { desc = "Registers" }
         )
+
+        vim.keymap.set("n", "<leader>sh",
+            function()
+                Snacks.picker.help()
+            end,
+            { desc = "Help" }
+        )
+
+        vim.keymap.set("n", "<leader>si",
+            function()
+                Snacks.picker.icons()
+            end,
+            { desc = "Icons" }
+        )
     end,
 }
