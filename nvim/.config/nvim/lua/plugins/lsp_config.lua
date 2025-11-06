@@ -57,8 +57,11 @@ local function configure_diagnostics()
             prefix = '',
         },
         virtual_text = {
-            severity = { min = vim.diagnostic.severity.ERROR }
-        }
+            severity = { min = vim.diagnostic.severity.ERROR },
+            prefix = "",
+        },
+        update_in_insert = true,
+        severity_sort = true,
     })
 end
 
