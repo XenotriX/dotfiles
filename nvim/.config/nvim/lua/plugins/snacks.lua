@@ -64,8 +64,11 @@ return {
                 easing = "linear",
             },
         },
-        words = { enabled = false },
         statuscolumn = { enabled = true },
+        words = {
+            enabled = true,
+            debounce = 50,
+        },
         image = {
             enabled = true,
             resolve = function(path, src)
