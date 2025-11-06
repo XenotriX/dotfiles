@@ -37,15 +37,20 @@ return {
                     horizontal = "─",
                     vertical = "│",
                     arrow = "▶",
-                }
+                },
             },
-            animate = { enabled = false },
+            animate = {
+                duration = { step = 5, total = 500 },
+            },
         },
         input = { enabled = true },
         picker = { enabled = true },
         notifier = { enabled = true },
         quickfile = { enabled = true },
-        scope = { enabled = false },
+        scope = {
+            enabled = true,
+            cursor = false,
+        },
         scroll = {
             enabled = true,
             animate = {
