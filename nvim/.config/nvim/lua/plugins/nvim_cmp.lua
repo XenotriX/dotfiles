@@ -7,43 +7,62 @@ return {
         'hrsh7th/cmp-cmdline',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-nvim-lua',
+        'onsails/lspkind-nvim',
+        'hrsh7th/vim-vsnip',
+        'hrsh7th/cmp-vsnip',
+        'rafamadriz/friendly-snippets',
     },
     event = "InsertEnter",
     opts = function()
         local cmp = require('cmp')
-        local kind_icons = {
-            Text = "",
-            Method = "",
-            Function = "",
-            Constructor = "",
-            Field = "",
-            Variable = "",
-            Class = "ﴯ",
-            Interface = "",
-            Module = "",
-            Property = "ﰠ",
-            Unit = "",
-            Value = "",
-            Enum = "",
-            Keyword = "",
-            Snippet = "",
-            Color = "",
-            File = "",
-            Reference = "",
-            Folder = "",
-            EnumMember = "",
-            Constant = "",
-            Struct = "",
-            Event = "",
-            Operator = "",
-            TypeParameter = ""
+
+        local kind_to_hl = {
+            Text = "@text",
+            Method = "@method",
+            Function = "@function",
+            Constructor = "@constructor",
+            Field = "@field",
+            Variable = "@variable",
+            Class = "@type",
+            Interface = "@type",
+            Module = "@namespace",
+            Property = "@property",
+            Unit = "@number",
+            Value = "@constant",
+            Enum = "@type",
+            Keyword = "@keyword",
+            Snippet = "@keyword",
+            Color = "@constant",
+            File = "@text.uri",
+            Reference = "@variable",
+            Folder = "@text.uri",
+            EnumMember = "@field",
+            Constant = "@constant",
+            Struct = "@type",
+            Event = "@keyword",
+            Operator = "@operator",
+            TypeParameter = "@type",
         }
+
+        local has_words_before = function()
+            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+            return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        end
+
+        local feedkey = function(key, mode)
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+        end
+
         return {
             window = {
-                completion = {
-                    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                -- completion = {
+                    -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                    -- col_offset = -3,
+                -- }
+                completion = cmp.config.window.bordered({
                     col_offset = -3,
-                }
+                }),
+                documentation = cmp.config.window.bordered(),
             },
             view = {
                 entries = { name = 'custom', selection_order = 'near_cursor' }
@@ -54,6 +73,24 @@ return {
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort(),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if vim.fn["vsnip#available"](1) == 1 then
+                        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                    elseif cmp.visible() then
+                        cmp.select_next_item()
+                    elseif has_words_before() then
+                        cmp.complete()
+                    else
+                        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                    end
+                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping(function()
+                    if vim.fn["vsnip#jumpable"](-1) == 1 then
+                        feedkey("<Plug>(vsnip-jump-prev)", "")
+                    elseif cmp.visible() then
+                        cmp.select_prev_item()
+                    end
+                end, { "i", "s" }),
             }),
             sources = {
                 { name = 'copilot' },
@@ -61,33 +98,21 @@ return {
                 { name = 'nvim_lsp_signature_help' },
                 { name = 'nvim_lua' },
                 { name = 'buffer' },
+                { name = 'vsnip' },
+            },
+            snippet = {
+                expand = function(args)
+                    vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                end,
             },
             formatting = {
                 format = function(entry, vim_item)
-                    -- Kind icons
-                    vim_item.menu = vim_item.kind
-                    vim_item.kind = kind_icons[vim_item.kind]
+                    vim_item.abbr_hl_group = kind_to_hl[vim_item.kind]
+                    vim_item.kind_hl_group = kind_to_hl[vim_item.kind]
+                    vim_item = require('lspkind').cmp_format({mode = "symbol"})(entry, vim_item)
                     return vim_item
                 end,
                 fields = { "kind", "abbr", "menu" },
-            },
-            sorting = {
-                priority_weight = 2,
-                comparators = {
-                    -- require("copilot_cmp").prioritize,
-
-                    -- Below is the default comparitor list and order for nvim-cmp
-                    cmp.config.compare.offset,
-                    -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-                    cmp.config.compare.exact,
-                    cmp.config.compare.score,
-                    cmp.config.compare.recently_used,
-                    cmp.config.compare.locality,
-                    cmp.config.compare.kind,
-                    cmp.config.compare.sort_text,
-                    cmp.config.compare.length,
-                    cmp.config.compare.order,
-                },
             },
         }
     end,
