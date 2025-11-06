@@ -1,10 +1,10 @@
 return {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     opts = {
         formatters_by_ft = {
-            python = { 'isort', 'black' },
-            cpp = { 'clang_format' },
-            lua = { 'stylua' },
+            python = { "isort", "black" },
+            cpp = { "clang_format" },
+            lua = { "stylua" },
         },
         default_format_opts = {
             lsp_format = "fallback",
@@ -13,12 +13,12 @@ return {
     cmd = { "ConformInfo" },
     keys = {
         {
-            '<leader>f',
+            "<leader>f",
             function()
-                require('conform').format({ async = true })
+                require("conform").format({ async = true })
             end,
             silent = true,
-            desc = "Format File"
+            desc = "Format File",
         },
     },
 }

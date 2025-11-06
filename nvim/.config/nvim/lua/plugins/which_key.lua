@@ -1,7 +1,7 @@
 return {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
     opts = {
-        preset = 'helix',
+        preset = "helix",
         plugins = {
             spelling = {
                 enabled = true,
@@ -19,23 +19,23 @@ return {
         local wk = require("which-key")
         wk.setup(opts)
         wk.add({
-            { "<leader>g",  group = "Git" },
-            { "<leader>d",  group = "Diagnostics" },
-            { "<leader>m",  desc = "Make" },
-            { "<leader>p",  group = "Peek" },
+            { "<leader>g", group = "Git" },
+            { "<leader>d", group = "Diagnostics" },
+            { "<leader>m", desc = "Make" },
+            { "<leader>p", group = "Peek" },
             { "<leader>pc", desc = "Class" },
             { "<leader>pf", desc = "Function" },
-            { "<leader>r",  group = "Refactor" },
+            { "<leader>r", group = "Refactor" },
             { "<leader>rA", desc = "Swap args (left)" },
             { "<leader>ra", desc = "Swap args (right)" },
-            { "<leader>s",  group = "Search" },
-            { "<leader>w",  group = "Wiki (Obsidian)" },
+            { "<leader>s", group = "Search" },
+            { "<leader>w", group = "Wiki (Obsidian)" },
             { "<leader>we", group = "Edit" },
             { "<leader>wv", group = "View" },
-            { "<leader>z",  desc = "Zen Mode" },
-            { "<leader>q",  group = "Quickfix" },
-            { "g",          group = "Goto" },
-            { "gs",         group = "Goto (split)" },
+            { "<leader>z", desc = "Zen Mode" },
+            { "<leader>q", group = "Quickfix" },
+            { "g", group = "Goto" },
+            { "gs", group = "Goto (split)" },
         })
     end,
 }

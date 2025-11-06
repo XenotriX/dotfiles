@@ -1,20 +1,20 @@
 return {
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
     dependencies = {
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-nvim-lua',
-        'onsails/lspkind-nvim',
-        'hrsh7th/vim-vsnip',
-        'hrsh7th/cmp-vsnip',
-        'rafamadriz/friendly-snippets',
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "onsails/lspkind-nvim",
+        "hrsh7th/vim-vsnip",
+        "hrsh7th/cmp-vsnip",
+        "rafamadriz/friendly-snippets",
     },
     event = "InsertEnter",
     opts = function()
-        local cmp = require('cmp')
+        local cmp = require("cmp")
 
         local kind_to_hl = {
             Text = "@text",
@@ -55,24 +55,20 @@ return {
 
         return {
             window = {
-                -- completion = {
-                    -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                    -- col_offset = -3,
-                -- }
                 completion = cmp.config.window.bordered({
                     col_offset = -3,
                 }),
                 documentation = cmp.config.window.bordered(),
             },
             view = {
-                entries = { name = 'custom', selection_order = 'near_cursor' }
+                entries = { name = "custom", selection_order = "near_cursor" },
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                ['<C-Space>'] = cmp.mapping.complete(),
-                ['<C-e>'] = cmp.mapping.abort(),
-                ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-e>"] = cmp.mapping.abort(),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if vim.fn["vsnip#available"](1) == 1 then
                         feedkey("<Plug>(vsnip-expand-or-jump)", "")
@@ -117,31 +113,31 @@ return {
         }
     end,
     config = function(_, opts)
-        local cmp = require('cmp')
+        local cmp = require("cmp")
         cmp.setup(opts)
 
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline({ '/', '?' }, {
+        cmp.setup.cmdline({ "/", "?" }, {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = 'buffer' }
+                { name = "buffer" },
             },
             formatting = {
-                fields = { 'abbr' }
-            }
+                fields = { "abbr" },
+            },
         })
 
         -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline(':', {
+        cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({
-                { name = 'path' }
+                { name = "path" },
             }, {
-                { name = 'cmdline' }
+                { name = "cmdline" },
             }),
             formatting = {
-                fields = { 'abbr' }
-            }
+                fields = { "abbr" },
+            },
         })
     end,
 }

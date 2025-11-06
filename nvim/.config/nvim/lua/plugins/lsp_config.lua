@@ -1,5 +1,5 @@
 local function configure_servers()
-    vim.lsp.config('basedpyright', {
+    vim.lsp.config("basedpyright", {
         -- Use the uv workspace root as the project root
         root_dir = function(bufnr, on_dir)
             local fname = vim.api.nvim_buf_get_name(bufnr)
@@ -27,9 +27,9 @@ local function configure_servers()
                     autoSearchPaths = true,
                     diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
-                }
-            }
-        }
+                },
+            },
+        },
     })
 end
 
@@ -37,24 +37,24 @@ local function configure_diagnostics()
     vim.diagnostic.config({
         signs = {
             text = {
-                [vim.diagnostic.severity.ERROR] = '',
-                [vim.diagnostic.severity.WARN] = '',
-                [vim.diagnostic.severity.HINT] = '',
-                [vim.diagnostic.severity.INFO] = '',
+                [vim.diagnostic.severity.ERROR] = "",
+                [vim.diagnostic.severity.WARN] = "",
+                [vim.diagnostic.severity.HINT] = "",
+                [vim.diagnostic.severity.INFO] = "",
             },
             texthl = {
-                [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
-                [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
-                [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
-                [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+                [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
             },
         },
         float = {
             focusable = false,
-            style = 'minimal',
-            border = 'rounded',
-            header = '',
-            prefix = '',
+            style = "minimal",
+            border = "rounded",
+            header = "",
+            prefix = "",
         },
         virtual_text = {
             severity = { min = vim.diagnostic.severity.ERROR },
@@ -72,46 +72,46 @@ local function set_keymaps()
 
     local function split_then_run(cmd)
         return function()
-            vim.cmd('vsplit')
+            vim.cmd("vsplit")
             cmd()
         end
     end
 
-    vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { silent = true, desc = "Open floating" })
-    vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { silent = true, desc = "Send to quickfix" })
-    vim.keymap.set('n', '<leader>da', vim.lsp.buf.code_action, { silent = true, desc = "Code Action" })
-    vim.keymap.set('n', '<leader>dd', quickfix, { silent = true, desc = "Quickfix" })
-    vim.keymap.set('n', '<leader>dD', vim.diagnostic.setqflist, { silent = true, desc = "Show all in quickfix" })
+    vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { silent = true, desc = "Open floating" })
+    vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { silent = true, desc = "Send to quickfix" })
+    vim.keymap.set("n", "<leader>da", vim.lsp.buf.code_action, { silent = true, desc = "Code Action" })
+    vim.keymap.set("n", "<leader>dd", quickfix, { silent = true, desc = "Quickfix" })
+    vim.keymap.set("n", "<leader>dD", vim.diagnostic.setqflist, { silent = true, desc = "Show all in quickfix" })
 
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true, desc = "Next diagnostic" })
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { silent = true, desc = "Previous diagnostic" })
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Next diagnostic" })
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, desc = "Previous diagnostic" })
 
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true, desc = "Declaration" })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true, desc = "Definition" })
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { silent = true, desc = "Implementation" })
-    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { silent = true, desc = "Type Definition" })
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, desc = "Declaration" })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true, desc = "Definition" })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true })
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { silent = true, desc = "Implementation" })
+    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { silent = true, desc = "Type Definition" })
 
-    vim.keymap.set('n', 'gsD', split_then_run(vim.lsp.buf.declaration), { silent = true, desc = "Declaration" })
-    vim.keymap.set('n', 'gsd', split_then_run(vim.lsp.buf.definition), { silent = true, desc = "Definition" })
-    vim.keymap.set('n', 'gsi', split_then_run(vim.lsp.buf.implementation), { silent = true, desc = "Implementation" })
-    vim.keymap.set('n', 'gst', split_then_run(vim.lsp.buf.type_definition), { silent = true, desc = "Type Definition" })
+    vim.keymap.set("n", "gsD", split_then_run(vim.lsp.buf.declaration), { silent = true, desc = "Declaration" })
+    vim.keymap.set("n", "gsd", split_then_run(vim.lsp.buf.definition), { silent = true, desc = "Definition" })
+    vim.keymap.set("n", "gsi", split_then_run(vim.lsp.buf.implementation), { silent = true, desc = "Implementation" })
+    vim.keymap.set("n", "gst", split_then_run(vim.lsp.buf.type_definition), { silent = true, desc = "Type Definition" })
 
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = "Rename" })
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { silent = true, desc = "Rename" })
 
-    vim.keymap.set('n', 'gh', ':LspClangdSwitchSourceHeader<CR>', { silent = true, desc = "Switch Header/Source" })
+    vim.keymap.set("n", "gh", ":LspClangdSwitchSourceHeader<CR>", { silent = true, desc = "Switch Header/Source" })
 end
 
 return {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        { 'mason-org/mason.nvim',          config = true },
-        { 'mason-org/mason-lspconfig.nvim' },
-        { 'hrsh7th/cmp-nvim-lsp',          optional = true },
+        { "mason-org/mason.nvim", config = true },
+        { "mason-org/mason-lspconfig.nvim" },
+        { "hrsh7th/cmp-nvim-lsp", optional = true },
     },
     config = function()
-        require('mason-lspconfig').setup()
+        require("mason-lspconfig").setup()
 
         configure_diagnostics()
         configure_servers()

@@ -1,5 +1,5 @@
 return {
-    'zbirenbaum/copilot.lua',
+    "zbirenbaum/copilot.lua",
     opts = {
         panel = { enabled = false },
         suggestion = {
@@ -14,6 +14,5 @@ return {
                 dismiss = "<C-]>",
             },
         },
-
-    }
+    },
 }

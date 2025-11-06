@@ -1,5 +1,5 @@
 return {
-    'obsidian-nvim/obsidian.nvim',
+    "obsidian-nvim/obsidian.nvim",
     opts = {
         attachments = {
             img_folder = "/",
@@ -12,8 +12,8 @@ return {
         },
         legacy_commands = false,
         disable_frontmatter = false,
-            note_frontmatter = {
-                func = function(note)
+        note_frontmatter = {
+            func = function(note)
                 local out = {}
 
                 if note.tags ~= nil and not vim.tbl_isempty(note.tags) then
@@ -50,34 +50,34 @@ return {
         end,
         ui = { enable = false },
         checkbox = {
-            order = { " ", "/", "x", "-", "!" , ">" , "~" },
+            order = { " ", "/", "x", "-", "!", ">", "~" },
         },
         daily_notes = {
             folder = "Daily Notes",
-        }
+        },
     },
     cmd = {
-        'Obsidian',
+        "Obsidian",
     },
     keys = {
         -- -- New note
-        { '<leader>wn',  ':Obsidian new<CR>',           desc = "New Note" },
-        { '<leader>wo',  ':Obsidian quick_switch<CR>',   desc = "Open Note" },
-        { '<leader>wf',  ':Obsidian search<CR>',        desc = "Search Notes" },
-        { '<leader>wt',  ':Obsidian today<CR>',         desc = "Today's Note" },
+        { "<leader>wn", ":Obsidian new<CR>", desc = "New Note" },
+        { "<leader>wo", ":Obsidian quick_switch<CR>", desc = "Open Note" },
+        { "<leader>wf", ":Obsidian search<CR>", desc = "Search Notes" },
+        { "<leader>wt", ":Obsidian today<CR>", desc = "Today's Note" },
 
         -- -- View
-        { '<leader>wvx', ':Obsidian open<CR>',          desc = "View in Obsidian" },
-        { '<leader>wvb', ':Obsidian backlinks<CR>',     desc = "Backlinks" },
-        { '<leader>wvl', ':Obsidian links<CR>',         desc = "Links" },
-        { '<leader>wvt', ':Obsidian tags<CR>',          desc = "Tags" },
-        { '<leader>wvd', ':Obsidian dailies -30 1<CR>', desc = "Daily notes" },
+        { "<leader>wvx", ":Obsidian open<CR>", desc = "View in Obsidian" },
+        { "<leader>wvb", ":Obsidian backlinks<CR>", desc = "Backlinks" },
+        { "<leader>wvl", ":Obsidian links<CR>", desc = "Links" },
+        { "<leader>wvt", ":Obsidian tags<CR>", desc = "Tags" },
+        { "<leader>wvd", ":Obsidian dailies -30 1<CR>", desc = "Daily notes" },
 
         -- -- Edit
-        { '<leader>wei', ':Obsidian insert_image<CR>',   desc = "Insert Image" },
-        { '<leader>wel', ':Obsidian link<CR>',          desc = "Insert Link" },
-        { '<leader>wex', ':Obsidian extract<CR>',       desc = "Extract Note",     mode = { 'n', 'v' } },
-        { '<leader>wer', ':Obsidian rename<CR>',        desc = "Rename Note" },
-        { '<leader>wen', ':Obsidian insert_link_new<CR>', desc = "Insert Link (New)" },
-    }
+        { "<leader>wei", ":Obsidian insert_image<CR>", desc = "Insert Image" },
+        { "<leader>wel", ":Obsidian link<CR>", desc = "Insert Link" },
+        { "<leader>wex", ":Obsidian extract<CR>", desc = "Extract Note", mode = { "n", "v" } },
+        { "<leader>wer", ":Obsidian rename<CR>", desc = "Rename Note" },
+        { "<leader>wen", ":Obsidian insert_link_new<CR>", desc = "Insert Link (New)" },
+    },
 }

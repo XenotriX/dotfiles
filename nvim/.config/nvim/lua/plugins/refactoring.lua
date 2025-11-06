@@ -1,5 +1,5 @@
 return {
-    'ThePrimeagen/refactoring.nvim',
+    "ThePrimeagen/refactoring.nvim",
     config = function()
         vim.keymap.set("x", "<leader>rf", ":Refactor extract ", { desc = "Extract Function" })
         vim.keymap.set("x", "<leader>rv", ":Refactor extract_var ", { desc = "Extract Variable" })

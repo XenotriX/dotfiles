@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     if vim.v.shell_error ~= 0 then
         vim.api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out,                            "WarningMsg" },
+            { out, "WarningMsg" },
             { "\nPress any key to exit..." },
         }, true, {})
         vim.fn.getchar()
@@ -24,7 +24,7 @@ vim.o.timeoutlen = 500
 vim.o.undofile = true
 vim.o.termguicolors = true
 vim.o.swapfile = false
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -49,13 +49,13 @@ vim.o.smartcase = true
 
 vim.o.foldlevel = 99
 vim.o.conceallevel = 2
-vim.g['Hexokinase_highlighters'] = { 'foregroundfull' }
-vim.g['vim_markdown_new_list_item_indent'] = 2
-vim.g['vim_markdown_math'] = 1
-vim.g['vim_markdown_folding_level'] = 1
-vim.g['surround_98'] = '**\r**'
+vim.g["Hexokinase_highlighters"] = { "foregroundfull" }
+vim.g["vim_markdown_new_list_item_indent"] = 2
+vim.g["vim_markdown_math"] = 1
+vim.g["vim_markdown_folding_level"] = 1
+vim.g["surround_98"] = "**\r**"
 
-vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
+vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]])
 
 -- Setup lazy.nvim
 require("lazy").setup({
