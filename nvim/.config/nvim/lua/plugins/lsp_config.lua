@@ -81,7 +81,6 @@ local function set_keymaps()
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { silent = true, desc = "Implementation" })
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { silent = true, desc = "Type Definition" })
-    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { silent = true, desc = "References" })
 
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = "Rename" })
 

@@ -5,6 +5,7 @@ return {
         "natecraddock/telescope-zf-native.nvim",
         'nvim-telescope/telescope-ui-select.nvim',
     },
+    enabled = false,
     opts = {
         defaults = {
             mappings = {
