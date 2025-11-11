@@ -91,6 +91,8 @@ local function set_keymaps()
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true })
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { silent = true, desc = "Implementation" })
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { silent = true, desc = "Type Definition" })
+    vim.keymap.set("n", "gci", vim.lsp.buf.incoming_calls, { silent = true, desc = "Incoming Calls" })
+    vim.keymap.set("n", "gco", vim.lsp.buf.outgoing_calls, { silent = true, desc = "Outgoing Calls" })
 
     vim.keymap.set("n", "gsD", split_then_run(vim.lsp.buf.declaration), { silent = true, desc = "Declaration" })
     vim.keymap.set("n", "gsd", split_then_run(vim.lsp.buf.definition), { silent = true, desc = "Definition" })
