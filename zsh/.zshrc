@@ -21,7 +21,7 @@ alias goto-save='echo -n "Name: "; read name; echo "$name: $(pwd)" >> /home/tibo
 alias addr='ip addr show dev wlp82s0 | grep inet | awk "{print \$2}"'
 alias ssh='TERM=xterm-256color ssh'
 alias t='task'
-alias wk='nvim +ObsidianQuickSwitch'
+alias wk='nvim +"Obsidian quick_switch"'
 
 # Environement variables
 export PATH=$PATH:/home/tibo/scripts
