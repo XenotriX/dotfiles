@@ -38,6 +38,10 @@ return {
                     -- You can also use captures from other query groups like `locals.scm`
                     ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
                 },
+                selection_modes = {
+                    ["@function.outer"] = "V",
+                    ["@class.outer"] = "V",
+                },
             },
             swap = {
                 enable = true,
