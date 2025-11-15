@@ -128,6 +128,7 @@ return {
                     preset = "dropdown",
                     layout = { backdrop = true },
                 },
+                filter = { default = true },
             })
         end, { desc = "Symbols (workspace)" })
 
