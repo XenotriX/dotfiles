@@ -44,6 +44,17 @@ return {
                 },
             },
         },
+        overrides = {
+            buftype = {
+                -- Hide language and other decorations in LSP hover window
+                nofile = {
+                    render_modes = true,
+                    padding = { highlight = "NormalFloat" },
+                    sign = { enabled = false },
+                    code = { language = false, disable_background = true },
+                },
+            },
+        },
     },
     config = function(_, opts)
         require("render-markdown").setup(opts)
