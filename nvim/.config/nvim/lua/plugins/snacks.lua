@@ -119,6 +119,7 @@ return {
                     layout = { backdrop = true },
                 },
                 filter = { default = true },
+                keep_parents = true,
             })
         end, { desc = "Symbols (file)" })
 
