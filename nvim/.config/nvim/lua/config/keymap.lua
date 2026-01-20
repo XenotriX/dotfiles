@@ -29,3 +29,9 @@ end
 vim.keymap.set("n", "<leader>qq", toggle_quickfix, { desc = "Toggle Quickfix Window" })
 vim.keymap.set("n", "<leader>qn", ":cnext<CR>", { desc = "Next quickfix location" })
 vim.keymap.set("n", "<leader>qp", ":cprev<CR>", { desc = "Previous quickfix location" })
+vim.keymap.set(
+    "n",
+    "*",
+    ":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>",
+    { silent = true, desc = "Search word under cursor" }
+)
