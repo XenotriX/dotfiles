@@ -44,6 +44,17 @@ return {
                 },
             },
         },
+        code = {
+            enabled = true,
+            border = "thin",
+            left_pad = 1,
+            right_pad = 1,
+            language_left = "█",
+            language_right = "█",
+            width = "block",
+            min_width = 78,
+            position = "right",
+        },
         overrides = {
             buftype = {
                 -- Hide language and other decorations in LSP hover window
