@@ -33,6 +33,10 @@ local function configure_servers()
             },
         },
     })
+
+    vim.lsp.config("ruff", {
+        root_dir = uv_workspace_rootdir,
+    })
 end
 
 local function configure_diagnostics()
