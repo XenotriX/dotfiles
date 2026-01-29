@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/strack", "network", "temperature", "battery", "clock", "tray", "custom/control-panel"],
+    "modules-right": ["custom/strack", "bluetooth", "network", "temperature", "battery", "clock", "tray", "custom/control-panel"],
     // Modules configuration
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -59,6 +59,15 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-connected": "",
+        "format-connected-battery": " {device_battery_percentage}%",
+        "format-disconnected": "",
+        "format-off": "",
+        "format-disabled": "",
+        "format-on": ""
     },
     "custom/strack": {
         "format": "{}",
