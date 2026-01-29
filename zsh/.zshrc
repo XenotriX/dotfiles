@@ -53,6 +53,8 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 
 # Git indicator in prompt
 autoload -Uz vcs_info
