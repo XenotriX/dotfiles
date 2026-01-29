@@ -31,6 +31,7 @@ export PATH=$PATH:/home/tibo/.spicetify
 export PATH=$PATH:/home/tibo/.local/bin
 export PATH=$PATH:/home/tibo/.cargo/bin
 export STRACK_DATA=/home/tibo/Documents/Share/strack_data.json
+export SSH_AUTH_SOCK=/home/tibo/.bitwarden-ssh-agent.sock
 
 # ZSH config
 fpath=(~/.zsh/completions $fpath)
