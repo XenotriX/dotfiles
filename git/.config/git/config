@@ -24,3 +24,7 @@
     dark = true
 [merge]
     conflictStyle = zdiff3
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff
