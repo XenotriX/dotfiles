@@ -15,3 +15,12 @@
 	clean = git-lfs clean -- %f
 [init]
 	defaultBranch = main
+[core]
+    pager = delta --side-by-side
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    dark = true
+[merge]
+    conflictStyle = zdiff3
