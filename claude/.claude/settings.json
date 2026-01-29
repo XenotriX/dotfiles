@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree *)",
+      "Bash(timeout *)",
+      "Bash(ls:*)",
+      "Bash(wc *)",
+      "Bash(tee *)",
+      "Read(/tmp/claude)"
+    ]
+  },
+  "model": "sonnet",
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true
+  },
+  "syntaxHighlightingDisabled": false
+}
