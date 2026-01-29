@@ -80,7 +80,7 @@ chpwd() {
 
 # nnn
 export NNN_BMS='h:~;s:~/School;d:~/Dev;.:~/dotfiles;i:/run/user/1000/gvfs/dav:host=elearning.hslu.ch,ssl=true,prefix=%2Filias%2Fwebdav.php/hslu/ILIAS/Informatik/Ausbildung/2022'
-alias nnn='nnn -Rd'
+alias nnn='nnn -RdA'
 
 n ()
 {
@@ -113,7 +113,7 @@ n ()
     fi
 }
 
-alias n='n -Rd'
+alias n='n -RdA'
 
 autoload -Uz compinit && compinit
 
