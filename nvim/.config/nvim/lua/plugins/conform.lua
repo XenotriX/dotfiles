@@ -5,6 +5,7 @@ return {
             python = { "isort", "ruff_fix", "ruff_format" },
             cpp = { "clang_format" },
             lua = { "stylua" },
+            json = { "jq" },
         },
         default_format_opts = {
             lsp_format = "fallback",
