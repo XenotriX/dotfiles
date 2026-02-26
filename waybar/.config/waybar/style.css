@@ -75,6 +75,7 @@ window#waybar.solo {
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #wireplumber,
 #custom-media,
