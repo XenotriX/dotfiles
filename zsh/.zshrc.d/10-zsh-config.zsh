@@ -16,8 +16,8 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
 
 # Edit command in editor
 autoload -z edit-command-line
