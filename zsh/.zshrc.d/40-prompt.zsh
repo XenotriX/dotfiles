@@ -3,7 +3,15 @@ if [ -z "$machine_icon" ]; then
   machine_icon=%m
 fi
 
-export PROMPT='%F{#C044FF}$machine_icon%f %(?:%F{magenta}:%F{#F935B0})%B%1~%f%b$vcs_info_msg_0_ '
+# Set default machine color if not set
+if [ -z "$machine_color" ]; then
+    machine_color="#5BAAD4"
+fi
+
+local _p_host='%K{#0f0f0f}%F{$machine_color} $machine_icon %f%k%F{#0f0f0f}%f'
+local _p_dir='%(?:%F{magenta}:%F{#F935B0})%B%1~%f%b'
+
+export PROMPT="${_p_host}${_p_dir}"'$vcs_info_msg_0_ '
 
 # Git indicator in prompt
 autoload -Uz vcs_info
