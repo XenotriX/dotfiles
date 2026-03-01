@@ -1,36 +1,21 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: 'Noto Sans', FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: 'SF Pro Display', 'Inter', 'Noto Sans', Helvetica, Arial, sans-serif;
+    font-size: 13px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    /* border-image: linear-gradient(90deg, rgba(252, 0, 255, 1) 0%, rgba(0, 219, 222, 1) 100%); */
-    border-color: rgba(252, 0, 255, 1);
-    border-image-slice: 0 0 100%;
-    border-image-width: 0 0 2px;
-    color: #ffffff;
+    background-color: rgba(20, 20, 22, 0.45);
+    color: #e5e5e7;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: .3s;
 }
-
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 #workspaces {
-    padding-left: 6px;
+    padding-left: 4px;
 }
 
 #workspaces button box label {
@@ -38,33 +23,42 @@ window#waybar.solo {
 }
 
 #workspaces button {
-    padding: 0;
+    padding: 0 6px;
     min-height: 16px;
     min-width: 16px;
-    margin: 6px 2px;
-    background-color: grey;
-    color: #ffffff;
-    padding: 0 4px;
-    border-radius: 10px;
+    margin: 5px 2px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(229, 229, 231, 0.6);
+    border-radius: 6px;
+    border: none;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #1c1c1e;
+    box-shadow: none;
 }
 
 #workspaces button.active {
-    background-color: white;
-    border-color: transparent;
-    color: black;
+    background-color: rgba(255, 255, 255, 0.22);
+    color: #e5e5e7;
+}
+
+#workspaces button.active:hover {
+    color: #1c1c1e;
+    box-shadow: none;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: rgba(255, 69, 58, 0.8);
+    color: #ffffff;
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 0 8px;
+    color: #e5e5e7;
 }
 
 #clock,
@@ -83,9 +77,10 @@ window#waybar.solo {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#bluetooth,
 #mpd {
-    padding: 0 10px;
-    color: #ffffff;
+    padding: 0 8px;
+    color: #e5e5e7;
 }
 
 #window,
@@ -93,31 +88,44 @@ window#waybar.solo {
     margin: 0 4px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#window {
+    color: rgba(229, 229, 231, 0.75);
+    font-size: 13px;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+#clock {
+    font-weight: 500;
+}
+
+#battery.warning {
+    color: rgba(255, 214, 10, 0.9);
+}
+
+#battery.critical {
+    color: rgba(255, 69, 58, 0.9);
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        color: #ffffff;
+        opacity: 0.5;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
     animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#network.disconnected {
+    color: rgba(255, 69, 58, 0.9);
+}
+
+#tray {
+    padding: 0 6px;
 }
 
 #tray > .passive {
@@ -126,10 +134,20 @@ window#waybar.solo {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    color: rgba(255, 69, 58, 0.9);
 }
 
 #custom-control-panel {
-    font-size: 25px;
+    font-size: 18px;
     padding: 0 6px;
+    color: rgba(229, 229, 231, 0.75);
+}
+
+/* Left/right module separators */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
