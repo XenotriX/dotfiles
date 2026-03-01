@@ -23,6 +23,8 @@ bindkey '^N' history-search-forward
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
+bindkey "^H" delete-char
+bindkey "^?" backward-delete-char
 
 # Delete word stops on /
 autoload -U select-word-style
