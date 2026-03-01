@@ -37,6 +37,8 @@ local function configure_servers()
     vim.lsp.config("ruff", {
         root_dir = uv_workspace_rootdir,
     })
+
+    vim.lsp.enable("dartls")
 end
 
 local function configure_diagnostics()
