@@ -1,0 +1,4 @@
+selector-args=-steal-focus -theme ~/.config/rofi/rofi-rbw.rasi
+action=type
+keybindings=ctrl+1:type:username:tab:password,ctrl+2:type:username,ctrl+3:type:password,ctrl+4:type:totp,ctrl+t::menu,ctrl+s:sync,ctrl+c:exit
+menu-keybindings=ctrl+t:type,ctrl+c:exit
