@@ -1,0 +1,22 @@
+hl.config({
+    input = {
+        kb_layout = "real-prog-dvorak,us",
+        kb_variant = "",
+        kb_model = "",
+        kb_options = "caps:escape",
+        kb_rules = "",
+
+        follow_mouse = 1,
+
+        touchpad = {
+            natural_scroll = true,
+        },
+
+        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        accel_profile = "flat",
+        repeat_rate = 25,
+        repeat_delay = 300,
+        natural_scroll = false,
+        numlock_by_default = true,
+    },
+})

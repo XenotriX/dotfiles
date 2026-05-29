@@ -1,0 +1,7 @@
+hl.config({
+    cursor = {
+        no_hardware_cursors = true,
+        hide_on_key_press = false,
+        inactive_timeout = 5,
+    },
+})
