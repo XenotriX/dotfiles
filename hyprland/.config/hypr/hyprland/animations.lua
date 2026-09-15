@@ -14,3 +14,5 @@ hl.animation({ leaf = "border", enabled = true, speed = 5, bezier = "myBezier" }
 hl.animation({ leaf = "fade", enabled = true, speed = 4, bezier = "myBezier" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "myBezier", style = "slide" })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 2, bezier = "myBezier", style = "slidefadevert -50%" })
+
+hl.window_rule({ match = { float = true }, animation = "fade" })
