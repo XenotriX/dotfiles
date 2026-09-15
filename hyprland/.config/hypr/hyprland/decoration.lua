@@ -1,9 +1,11 @@
+local default_border = "rgba(ffffffaa)"
+
 hl.config({
     general = {
         -- borders
         border_size = 1,
         col = {
-            active_border = "rgba(ffffffaa)",
+            active_border = default_border,
             inactive_border = "rgba(2a2a2a80)",
         },
 
@@ -32,3 +34,27 @@ hl.config({
         },
     },
 })
+
+hl.on("keybinds.submap", function(name)
+    if name == "resize" then
+        hl.config({
+            general = {
+                col = {
+                    active_border = "rgba(255, 165, 0, 0.8)",
+                },
+            },
+        })
+        -- Force refocus to update the border color immediately
+        hl.dispatch(hl.dsp.focus({ window = hl.get_active_window() }))
+    else
+        hl.config({
+            general = {
+                col = {
+                    active_border = default_border,
+                },
+            },
+        })
+        -- Force refocus to update the border color immediately
+        hl.dispatch(hl.dsp.focus({ window = hl.get_active_window() }))
+    end
+end)
