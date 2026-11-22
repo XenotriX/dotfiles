@@ -38,6 +38,11 @@ local function configure_servers()
         root_dir = uv_workspace_rootdir,
     })
 
+    vim.lsp.config("clangd", {
+        -- compile-commands-dir must be set to the build directory std module to work properly.
+        cmd = { "clangd", "--experimental-modules-support", "--compile-commands-dir=build/Debug" },
+    })
+
     vim.lsp.enable("dartls")
 end
 
