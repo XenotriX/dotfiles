@@ -1,78 +1,54 @@
+local ensure_installed = {
+    "bash",
+    "c",
+    "cpp",
+    "cmake",
+    "css",
+    "gitcommit",
+    "git_config",
+    "gitignore",
+    "git_rebase",
+    "html",
+    "ini",
+    "json",
+    "lua",
+    "make",
+    "markdown",
+    "python",
+    "rasi",
+    "tmux",
+    "toml",
+    "vim",
+    "vimdoc",
+    "yaml",
+}
+
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    opts = {
-        -- Automatically install missing parsers when entering buffer
-        auto_install = true,
+    config = function()
+        require("nvim-treesitter").install(ensure_installed)
 
-        highlight = {
-            enable = true,
+        -- Start treesitter for all filetypes that have a parser installed
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function(args)
+                local bufnr = args.buf
+                local filetype = args.match
+                local lang = vim.treesitter.language.get_lang(filetype)
+                if not lang then
+                    return
+                end
+                if not pcall(vim.treesitter.start, bufnr, lang) then
+                    return
+                end
+                vim.wo.foldmethod = "expr"
+                vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                vim.wo.foldtext = ""
+            end,
+        })
 
-            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-            -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-            -- Using this option may slow down your editor, and you may see some duplicate highlights.
-            -- Instead of true it can also be a list of languages
-            additional_vim_regex_highlighting = false,
-        },
-        textobjects = {
-            select = {
-                enable = true,
-
-                -- Automatically jump forward to textobj, similar to targets.vim
-                lookahead = true,
-
-                keymaps = {
-                    -- You can use the capture groups defined in textobjects.scm
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ap"] = "@parameter.outer",
-                    -- You can optionally set descriptions to the mappings (used in the desc parameter of
-                    -- nvim_buf_set_keymap) which plugins like which-key display
-                    ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                    -- You can also use captures from other query groups like `locals.scm`
-                    ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-                },
-                selection_modes = {
-                    ["@function.outer"] = "V",
-                    ["@class.outer"] = "V",
-                },
-            },
-            swap = {
-                enable = true,
-                swap_next = {
-                    ["<leader>ra"] = "@parameter.inner",
-                },
-                swap_previous = {
-                    ["<leader>rA"] = "@parameter.inner",
-                },
-            },
-            lsp_interop = {
-                enable = true,
-                border = "rounded",
-                floating_preview_opts = {},
-                peek_definition_code = {
-                    ["<leader>pf"] = "@function.outer",
-                    ["<leader>pc"] = "@class.outer",
-                },
-            },
-        },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "gnn",
-                node_incremental = "<CR>",
-                node_decremental = "<BS>",
-            },
-        },
-    },
-    config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
         local links = {
             ["@lsp.type.namespace"] = "@namespace",
             ["@lsp.type.type"] = "@type",
@@ -92,11 +68,6 @@ return {
         for newgroup, oldgroup in pairs(links) do
             vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
         end
-
-        -- Enable folding based on treesitter
-        vim.opt.foldmethod = "expr"
-        vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        vim.opt.foldtext = ""
 
         vim.api.nvim_set_hl(0, "@text.title.markdown", {})
         vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { fg = "#ff757f", bold = true })
